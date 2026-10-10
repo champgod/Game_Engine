@@ -18,3 +18,4 @@ So yesterday I didn't really get much time to work on this because midterms and 
 
 https://wiki.libsdl.org/SDL3/APIByCategory.   Here is a reference that gives us the APIS by category, so we have a good sense of what SDL3 methods are worth using for what scenario.
 
+Holy shit there is so much content to work with for OpenGL. It's a little intimidating for sure. But I'm gathering that we need to create an OpenGL context where we set up basic configurations (minimum version, maximum version, etc). But after that configuratiion is done we set up context as an instance of the window, at leas that's how I'm making sense of it. But now to draw the damn triangle.
