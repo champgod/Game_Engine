@@ -19,3 +19,5 @@ So yesterday I didn't really get much time to work on this because midterms and 
 https://wiki.libsdl.org/SDL3/APIByCategory.   Here is a reference that gives us the APIS by category, so we have a good sense of what SDL3 methods are worth using for what scenario.
 
 Holy shit there is so much content to work with for OpenGL. It's a little intimidating for sure. But I'm gathering that we need to create an OpenGL context where we set up basic configurations (minimum version, maximum version, etc). But after that configuratiion is done we set up context as an instance of the window, at leas that's how I'm making sense of it. But now to draw the damn triangle.
+
+Finished drawing the triangle. So much setup and so much code for it. You have to compile the shaders (responsible for colors and stuff). You need a VBO and VAO. The VAO is like the blueprint for drawing and the VBO is the attributes of whatever you are drawing. Then in the actual while loop (where the program runs and handles events) you have to draw the object. When the while loop is done you need to clear up the memory by deleting those VBO and VAOs.
