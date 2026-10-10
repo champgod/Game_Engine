@@ -10,3 +10,11 @@ Oct 8 2026 - 1:02 - 1:10 A.M
 See a trend in when I tend to update my project? Yeah I've got to work on this. Anyhow today I refreshed up on some C++ fundamentals, notably with pointers and references (dangling/hanging pointers as well). Seeing as to how I already have Java experience getting back into C++ is not so bad. That being said I am finding that it is very easy to forget semicolons and whatnot because my CS61A course is in Python, where the syntax is overly simple. So after a bit of review on that, as well as classes and structs, I very briefly glossed over the whole compilation and linking process, which admittedly I don't quite understand yet. But what I've gathered is that there are 4 steps, which I just remember by calling it PCAL. Close enough to kCAL. P - preprocessing, C - compiling, A- assembly, and finally L - linking. I have a somewhat vague understanding of this. 
 
 I set up CMake. What I'm understanding is that this is typically how we go about building projects. CMake seems to be very reliable for when we get to working with multiple files without having any kinds of conflicts, as well as having a stable build. I noticed when reading up about CMake that there is a CMakeList where we setup the configuration. This comes in the form of setting the minimum requirements to build this project, what version of C++ we're using and also adding an executable to our project. I imagine CMake to be very useful just for these configurations alone because of the fact that we want to ensure that we know exactly what kind of requirements are necessary to build this program. Last thing we'd want is to try to build a modern program with something that is dated.
+
+
+October 9 - 7:50 P.M
+
+So yesterday I didn't really get much time to work on this because midterms and quizzes were just piling up but now I'm pretty free so I'm going to work on learning what SDL3 is. It seems like SDL3 is mainly responsible for making input handling possible as well as having a dedicated window to run the program on. I imagine it to be something like Tkinter. Audio and graphics management as well. 
+
+https://wiki.libsdl.org/SDL3/APIByCategory.   Here is a reference that gives us the APIS by category, so we have a good sense of what SDL3 methods are worth using for what scenario.
+
