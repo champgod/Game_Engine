@@ -61,10 +61,23 @@ int main() {
 
     // 1. Define the triangle's coordinates.
     const float vertices[] = {
-        -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        0.0f,  0.5f, 0.0f
+        -0.0f, -0.5f, 0.0f,
+        1.0f, -0.5f, 0.0f,
+        0.5f,  0.5f, 0.0f
     };
+
+    const float rectangleVertices[] = {
+    // Triangle 1
+        -1.0f, -0.5f, 0.0f,
+        0.0f, -0.5f, 0.0f,
+        0.0f,  0.5f, 0.0f,
+
+        // Triangle 2
+        -1.0f, -0.5f, 0.0f,
+        0.0f,  0.5f, 0.0f,
+        -1.0f,  0.5f, 0.0f
+    };
+
     
     
     const char* vertexShaderSource = R"glsl(
@@ -92,6 +105,7 @@ int main() {
     {
         ShaderProgram program(vertexShaderSource, fragmentShaderSource); // Create a program object
         Mesh triangle(vertices, 3);
+        Mesh rectangle(rectangleVertices, 6);
         Renderer renderer;
 
         if (!program.isValid() || !triangle.isValid()) {
@@ -118,6 +132,7 @@ int main() {
 
                 // Draw the triangle.
                 renderer.render(program, triangle);
+                renderer.render(program, rectangle);
 
                 SDL_GL_SwapWindow(window);
             }

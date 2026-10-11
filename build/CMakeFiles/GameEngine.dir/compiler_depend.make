@@ -372,6 +372,7 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: /Users/pranavtalatam/Projects/Game_Eng
   /Library/Developer/CommandLineTools/usr/lib/clang/21/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/21/include/stdint.h \
   /Users/pranavtalatam/Projects/Game_Engine/src/Mesh.h \
+  /Users/pranavtalatam/Projects/Game_Engine/src/Renderer.h \
   /Users/pranavtalatam/Projects/Game_Engine/src/ShaderProgram.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_assert.h \
