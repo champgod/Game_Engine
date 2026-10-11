@@ -10,6 +10,7 @@ find_package(OpenGL REQUIRED)
 
 add_executable(GameEngine
     src/main.cpp
+    src/ShaderProgram.cpp
 )
 
 target_link_libraries(

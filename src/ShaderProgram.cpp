@@ -1,4 +1,4 @@
-#include <ShaderProgram.h>
+#include "ShaderProgram.h"
 #include <SDL3/SDL.h>
 
 
@@ -16,13 +16,12 @@ GLuint ShaderProgram::compileShader(GLenum type, const char* source){ // Compili
     glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
 
     if(status != GL_TRUE){ // Means that we couldn't compile the shader whatsoever
-        SDL_Log("Shader compilation has failed!");
-        glDeleteShader(shader);
 
         char log[1024] = {}; // debug recommendations from ChatGPT
 
         glGetShaderInfoLog(shader, sizeof(log), nullptr, log); //debug recommendations from ChatGPT
         SDL_Log("Shader compilation failed: %s", log); //debug recommendations from ChatGPT
+        glDeleteShader(shader); // deletes the shader
 
         return 0; // Signifies the shader compilation has failed
     }
@@ -52,12 +51,49 @@ ShaderProgram::ShaderProgram(const char* vertexSource, const char* fragmentSourc
         glDeleteShader(vertexShader);
         glDeleteShader(fragmentShader);
 
-        SDL_Log("Program creation failed!")
+        SDL_Log("Program creation failed!");
         return; // Program creation failed
     }
 
-    glAttachShader(programId, vertexShader);
-    glAttachShader(programId, fragmentShader);
+    glAttachShader(programId, vertexShader); // attach vertex shader
+    glAttachShader(programId, fragmentShader); // attach fragment shader
+
+    glBindAttribLocation(programId, 0, "aPosition"); // Binds attribute location
+    glBindFragDataLocation(programId, 0, "outColor"); // Binds color location
+    glLinkProgram(programId); // Links the program
+
+    GLint status = GL_FALSE; 
+    glGetProgramiv(programId, GL_LINK_STATUS, &status);
+
+    if(status != GL_TRUE){
+        char log[1024] = {}; // debug recommendations from ChatGPT
+
+        glGetProgramInfoLog(programId, sizeof(log), nullptr, log); //debug recommendations from ChatGPT
+        SDL_Log("Linking failed: %s", log); //debug recommendations from ChatGPT
+
+        glDeleteShader(vertexShader); // delete vertex shader
+        glDeleteShader(fragmentShader); // delete fragment shader
+        glDeleteProgram(programId); // delete the program
+        programId = 0;
+
+        return; // Linking failed
+    }
+    glDeleteShader(vertexShader); // delete vertex shader
+    glDeleteShader(fragmentShader); // delete fragment shader
 }
 
+ShaderProgram::~ShaderProgram(){ // deletes the program to free memory
+    if(isValid()){
+        glDeleteProgram(programId);
+    }
+}
 
+bool ShaderProgram::isValid() const{ // if our programId is not zero then we know the program exists and we return that 
+    return (programId != 0);
+}
+
+void ShaderProgram::use() const{ // we use our program if it exists
+    if(isValid()){
+        glUseProgram(programId);
+    }
+}

@@ -1,26 +1,7 @@
+#include "ShaderProgram.h"
+
 #include <SDL3/SDL.h>
 #include <OpenGL/gl3.h>
-GLuint compileShader(GLenum type, const char* source) {
-    GLuint shader = glCreateShader(type);
-
-    glShaderSource(shader, 1, &source, nullptr);
-    glCompileShader(shader);
-
-    GLint success = GL_FALSE;
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-
-    if (!success) {
-        char log[1024] = {};
-        glGetShaderInfoLog(shader, sizeof(log), nullptr, log);
-
-        SDL_Log("Shader compilation failed: %s", log);
-
-        glDeleteShader(shader);
-        return 0;
-    }
-
-    return shader;
-}
 
 int main() {
     if (!SDL_Init(SDL_INIT_VIDEO)) {
@@ -135,86 +116,42 @@ int main() {
         }
     )glsl";
 
-    GLuint vertexShader =
-    compileShader(GL_VERTEX_SHADER, vertexShaderSource);
+    int exitCode = 0;
 
-    GLuint fragmentShader =
-    compileShader(GL_FRAGMENT_SHADER, fragmentShaderSource);
+    {
+        ShaderProgram program(vertexShaderSource, fragmentShaderSource); // Create a program object
 
-    if (!vertexShader || !fragmentShader) {
-        if (vertexShader) glDeleteShader(vertexShader);
-        if (fragmentShader) glDeleteShader(fragmentShader);
+        if (!program.isValid()) {
+            SDL_Log("Shader program setup failure!");
+            exitCode = 1;
+        }
+        else{
+            while (running) {
+                while (SDL_PollEvent(&event)) {
+                    if (event.type == SDL_EVENT_QUIT ||
+                        (event.type == SDL_EVENT_KEY_DOWN &&
+                        event.key.key == SDLK_ESCAPE)) {
+                        running = false;
+                    }
+                }
+                int width = 0;
+                int height = 0;
 
-        glDeleteBuffers(1, &vbo);
-        glDeleteVertexArrays(1, &vao);
-        SDL_GL_DestroyContext(context);
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return 1;
-    }
+                SDL_GetWindowSizeInPixels(window, &width, &height);
+                glViewport(0, 0, width, height);
 
-    SDL_Log("Both shaders compiled successfully.");
+                glClearColor(0.08f, 0.10f, 0.16f, 1.0f);
+                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    GLuint program = glCreateProgram();
+                // Draw the triangle.
+                program.use();
+                glBindVertexArray(vao);
+                glDrawArrays(GL_TRIANGLES, 0, 3);
 
-    glAttachShader(program, vertexShader);
-    glAttachShader(program, fragmentShader);
-
-    // Match the vertex shader input to your VAO's attribute location.
-    glBindAttribLocation(program, 0, "aPosition");
-
-    glLinkProgram(program);
-
-    GLint linked = GL_FALSE;
-    glGetProgramiv(program, GL_LINK_STATUS, &linked);
-
-    if (!linked) {
-        char log[1024] = {};
-        glGetProgramInfoLog(program, sizeof(log), nullptr, log);
-
-        SDL_Log("Program linking failed: %s", log);
-
-        glDeleteProgram(program);
-        glDeleteShader(vertexShader);
-        glDeleteShader(fragmentShader);
-        glDeleteBuffers(1, &vbo);
-        glDeleteVertexArrays(1, &vao);
-
-        SDL_GL_DestroyContext(context);
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return 1;
-    }
-
-    SDL_Log("Shader program linked successfully.");
-    
-    while (running) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_EVENT_QUIT ||
-                (event.type == SDL_EVENT_KEY_DOWN &&
-                 event.key.key == SDLK_ESCAPE)) {
-                running = false;
+                SDL_GL_SwapWindow(window);
             }
         }
-        int width = 0;
-        int height = 0;
-
-        SDL_GetWindowSizeInPixels(window, &width, &height);
-        glViewport(0, 0, width, height);
-
-        glClearColor(0.08f, 0.10f, 0.16f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        // Draw the triangle.
-        glUseProgram(program);
-        glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-
-        SDL_GL_SwapWindow(window);
     }
-
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
 
     glDeleteBuffers(1, &vbo);
     glDeleteVertexArrays(1, &vao);
@@ -223,5 +160,5 @@ int main() {
     SDL_DestroyWindow(window);
     SDL_Quit();
 
-    return 0;
+    return exitCode;
 }
