@@ -1,23 +1,2 @@
-# Game_Engine
-Going to document my progress creating a game engine using C++. 
-
-Oct 7 2026 - 2:20 A.M
-
-I am finding that I cannot sleep whatsoever, so my goal here is to make some kind of progress in creating a game engine. I'm finding that the memory management side of programming is very fascinating. I went down a rabbit hole earlier on how the game development for Ocarina of Time went and how they seriously over-engineered the game. I found that they managed to fit all this content for the game into 32 MB and that they ran all of this in 4 MB system RAM. For a 3d game that is quite insane and this led to me going down a rabbit hole on how data is managed, loaded and unloaded. I use ChatGPT as a tool for learning but not for code, figure it could be a good kind of guide into creating something while also learning and not just mindlessly programming. From my computer science classes I found pointers and references to be particularly fascinating because this is where we as the programmer have more control. In game design this is especially important for optimizing how the game itself runs. Coming from Java, which does the memory management for us, I found C++ to be quite interesting from the pointers and references alone. Though it's been a hot minute since I last coded in C++, I hope for this to be a good display of what I can pull off in about 2 weeks (though I'd like to finish this sooner). Once again, I will be using ChatGPT to guide myself through this, since not using AI in today's age is kind of silly. 
-
-Oct 8 2026 - 1:02 - 1:10 A.M
-
-See a trend in when I tend to update my project? Yeah I've got to work on this. Anyhow today I refreshed up on some C++ fundamentals, notably with pointers and references (dangling/hanging pointers as well). Seeing as to how I already have Java experience getting back into C++ is not so bad. That being said I am finding that it is very easy to forget semicolons and whatnot because my CS61A course is in Python, where the syntax is overly simple. So after a bit of review on that, as well as classes and structs, I very briefly glossed over the whole compilation and linking process, which admittedly I don't quite understand yet. But what I've gathered is that there are 4 steps, which I just remember by calling it PCAL. Close enough to kCAL. P - preprocessing, C - compiling, A- assembly, and finally L - linking. I have a somewhat vague understanding of this. 
-
-I set up CMake. What I'm understanding is that this is typically how we go about building projects. CMake seems to be very reliable for when we get to working with multiple files without having any kinds of conflicts, as well as having a stable build. I noticed when reading up about CMake that there is a CMakeList where we setup the configuration. This comes in the form of setting the minimum requirements to build this project, what version of C++ we're using and also adding an executable to our project. I imagine CMake to be very useful just for these configurations alone because of the fact that we want to ensure that we know exactly what kind of requirements are necessary to build this program. Last thing we'd want is to try to build a modern program with something that is dated.
-
-
-October 9 - 7:50 P.M
-
-So yesterday I didn't really get much time to work on this because midterms and quizzes were just piling up but now I'm pretty free so I'm going to work on learning what SDL3 is. It seems like SDL3 is mainly responsible for making input handling possible as well as having a dedicated window to run the program on. I imagine it to be something like Tkinter. Audio and graphics management as well. 
-
-https://wiki.libsdl.org/SDL3/APIByCategory.   Here is a reference that gives us the APIS by category, so we have a good sense of what SDL3 methods are worth using for what scenario.
-
-Holy shit there is so much content to work with for OpenGL. It's a little intimidating for sure. But I'm gathering that we need to create an OpenGL context where we set up basic configurations (minimum version, maximum version, etc). But after that configuratiion is done we set up context as an instance of the window, at leas that's how I'm making sense of it. But now to draw the damn triangle.
-
-Finished drawing the triangle. So much setup and so much code for it. You have to compile the shaders (responsible for colors and stuff). You need a VBO and VAO. The VAO is like the blueprint for drawing and the VBO is the attributes of whatever you are drawing. Then in the actual while loop (where the program runs and handles events) you have to draw the object. When the while loop is done you need to clear up the memory by deleting those VBO and VAOs.
+# Game Engine
+Moving all of my thoughts and progress to the devlog and will keep the README a little more coherent.
