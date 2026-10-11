@@ -1,4 +1,5 @@
 #include "ShaderProgram.h"
+#include "Mesh.h"
 
 #include <SDL3/SDL.h>
 #include <OpenGL/gl3.h>
@@ -63,39 +64,8 @@ int main() {
         0.5f, -0.5f, 0.0f,
         0.0f,  0.5f, 0.0f
     };
-
-    // 2. Declare the identifiers.
-    GLuint vao = 0;
-    GLuint vbo = 0;
-
-    // 3. Create and bind the VAO.
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
-    // 4. Create and bind the VBO.
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-    // 5. Upload the vertex data.
-    glBufferData(
-        GL_ARRAY_BUFFER,
-        sizeof(vertices),
-        vertices,
-        GL_STATIC_DRAW
-    );
-
-    // 6. Configure the VAO to read the vertices.
-    glVertexAttribPointer(
-        0,
-        3,
-        GL_FLOAT,
-        GL_FALSE,
-        3 * sizeof(float),
-        nullptr
-    );
-
-    glEnableVertexAttribArray(0);
-
+    
+    
     const char* vertexShaderSource = R"glsl(
         #version 150 core
 
@@ -120,9 +90,10 @@ int main() {
 
     {
         ShaderProgram program(vertexShaderSource, fragmentShaderSource); // Create a program object
+        Mesh triangle(vertices, 3);
 
-        if (!program.isValid()) {
-            SDL_Log("Shader program setup failure!");
+        if (!program.isValid() || !triangle.isValid()) {
+            SDL_Log("Shader or mesh program setup failure!");
             exitCode = 1;
         }
         else{
@@ -145,16 +116,13 @@ int main() {
 
                 // Draw the triangle.
                 program.use();
-                glBindVertexArray(vao);
-                glDrawArrays(GL_TRIANGLES, 0, 3);
+                triangle.bind();
+                glDrawArrays(GL_TRIANGLES, 0, triangle.getVertexCount());
 
                 SDL_GL_SwapWindow(window);
             }
         }
     }
-
-    glDeleteBuffers(1, &vbo);
-    glDeleteVertexArrays(1, &vao);
 
     SDL_GL_DestroyContext(context);
     SDL_DestroyWindow(window);
