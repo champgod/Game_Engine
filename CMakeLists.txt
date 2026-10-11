@@ -12,6 +12,7 @@ add_executable(GameEngine
     src/main.cpp
     src/ShaderProgram.cpp
     src/Mesh.cpp
+    src/Renderer.cpp
 )
 
 target_link_libraries(

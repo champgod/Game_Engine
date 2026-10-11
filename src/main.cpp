@@ -1,5 +1,6 @@
 #include "ShaderProgram.h"
 #include "Mesh.h"
+#include "Renderer.h"
 
 #include <SDL3/SDL.h>
 #include <OpenGL/gl3.h>
@@ -91,6 +92,7 @@ int main() {
     {
         ShaderProgram program(vertexShaderSource, fragmentShaderSource); // Create a program object
         Mesh triangle(vertices, 3);
+        Renderer renderer;
 
         if (!program.isValid() || !triangle.isValid()) {
             SDL_Log("Shader or mesh program setup failure!");
@@ -115,9 +117,7 @@ int main() {
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
                 // Draw the triangle.
-                program.use();
-                triangle.bind();
-                glDrawArrays(GL_TRIANGLES, 0, triangle.getVertexCount());
+                renderer.render(program, triangle);
 
                 SDL_GL_SwapWindow(window);
             }

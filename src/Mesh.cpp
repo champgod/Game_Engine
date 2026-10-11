@@ -1,6 +1,4 @@
 #include "Mesh.h"
-#include <SDL3/SDL.h>
-
 
 Mesh::Mesh(const float* vertices, GLsizei vertexCount){    
     this->vertexCount = vertexCount; // Sets the vertex count to whatever we pass
@@ -34,7 +32,7 @@ bool Mesh::isValid() const{
     return (vao != 0 && vbo != 0 && vertexCount > 0);
 }
 
-GLsizei Mesh::getVertexCount(){
+GLsizei Mesh::getVertexCount() const{
     return vertexCount;
 }
 

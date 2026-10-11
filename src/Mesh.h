@@ -11,7 +11,7 @@ class Mesh {
 
         bool isValid() const;
         void bind() const;
-        GLsizei getVertexCount();
+        GLsizei getVertexCount() const;
 
     private:
         GLuint vao = 0;

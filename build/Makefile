@@ -153,6 +153,30 @@ src/Mesh.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/Mesh.cpp.s
 .PHONY : src/Mesh.cpp.s
 
+src/Renderer.o: src/Renderer.cpp.o
+.PHONY : src/Renderer.o
+
+# target to build an object file
+src/Renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/Renderer.cpp.o
+.PHONY : src/Renderer.cpp.o
+
+src/Renderer.i: src/Renderer.cpp.i
+.PHONY : src/Renderer.i
+
+# target to preprocess a source file
+src/Renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/Renderer.cpp.i
+.PHONY : src/Renderer.cpp.i
+
+src/Renderer.s: src/Renderer.cpp.s
+.PHONY : src/Renderer.s
+
+# target to generate assembly for a file
+src/Renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/Renderer.cpp.s
+.PHONY : src/Renderer.cpp.s
+
 src/ShaderProgram.o: src/ShaderProgram.cpp.o
 .PHONY : src/ShaderProgram.o
 
@@ -213,6 +237,9 @@ help:
 	@echo "... src/Mesh.o"
 	@echo "... src/Mesh.i"
 	@echo "... src/Mesh.s"
+	@echo "... src/Renderer.o"
+	@echo "... src/Renderer.i"
+	@echo "... src/Renderer.s"
 	@echo "... src/ShaderProgram.o"
 	@echo "... src/ShaderProgram.i"
 	@echo "... src/ShaderProgram.s"
