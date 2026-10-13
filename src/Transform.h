@@ -8,6 +8,8 @@ class Transform{
         void setPosition(float posX, float posY, float posZ);
         void setRotation(float radX, float radY, float radZ);
 
+        void setScale(float scaleX, float scaleY, float scaleZ);
+
         float getX() const;
         float getY() const;
         float getZ() const;
@@ -15,6 +17,10 @@ class Transform{
         float getRadX() const;
         float getRadY() const;
         float getRadZ() const;
+
+        float getScaleX() const;
+        float getScaleY() const;
+        float getScaleZ() const;
 
         glm::mat4 getModelMatrix() const;
 
@@ -26,5 +32,10 @@ class Transform{
         float radX = 0.0f;
         float radY = 0.0f;
         float radZ = 0.0f;
+
+        float scaleX = 1.0f;
+        float scaleY = 1.0f;
+        float scaleZ = 1.0f;
+
 
 };

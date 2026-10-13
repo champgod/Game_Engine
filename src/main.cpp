@@ -4,6 +4,8 @@
 
 #include <SDL3/SDL.h>
 #include <OpenGL/gl3.h>
+#include <glm/glm.hpp>
+
 
 int main() {
     if (!SDL_Init(SDL_INIT_VIDEO)) {
@@ -132,7 +134,9 @@ int main() {
                 glClearColor(0.08f, 0.10f, 0.16f, 1.0f);
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-                triangleTransform.translate(-0.01f, 0.0f, 0.0f);
+                //triangleTransform.translate(-0.01f, 0.0f, 0.0f);
+               // triangleTransform.setRotation(0.0f, 0.0f, glm::radians(90.0f));
+                triangleTransform.setScale(2.0f, 1.0f, 1.0f);
 
                 // Draw the triangle.
                 renderer.render(program, triangle, triangleTransform);
