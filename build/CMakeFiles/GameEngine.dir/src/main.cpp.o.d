@@ -43,6 +43,7 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h \
   /Users/pranavtalatam/Projects/Game_Engine/src/Mesh.h \
   /Users/pranavtalatam/Projects/Game_Engine/src/Renderer.h \
+  /Users/pranavtalatam/Projects/Game_Engine/src/Transform.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_stdinc.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_platform_defines.h \

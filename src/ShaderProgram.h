@@ -15,6 +15,7 @@ class ShaderProgram{
         bool isValid() const; // checks that the program is valid
         void use() const; // method call that makes it so we use the program as needed
 
+        void setVec3Uniform(const char* name, float x, float y, float z) const;
 
     private:
         GLuint programId = 0; // each program has a unique identifier

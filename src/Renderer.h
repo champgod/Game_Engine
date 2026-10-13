@@ -2,8 +2,9 @@
 #include <OpenGL/gl3.h>
 #include "Mesh.h"
 #include "ShaderProgram.h"
+#include "Transform.h"
 
 class Renderer {
     public:
-        void render(const ShaderProgram& program, const Mesh& mesh) const;
+        void render(const ShaderProgram& program, const Mesh& mesh, const Transform& transform) const;
 };

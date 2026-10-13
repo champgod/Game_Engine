@@ -87,7 +87,8 @@ CMakeFiles/GameEngine.dir/src/Renderer.cpp.o: /Users/pranavtalatam/Projects/Game
   /Library/Developer/CommandLineTools/usr/lib/clang/21/include/stdint.h \
   /Users/pranavtalatam/Projects/Game_Engine/src/Mesh.h \
   /Users/pranavtalatam/Projects/Game_Engine/src/Renderer.h \
-  /Users/pranavtalatam/Projects/Game_Engine/src/ShaderProgram.h
+  /Users/pranavtalatam/Projects/Game_Engine/src/ShaderProgram.h \
+  /Users/pranavtalatam/Projects/Game_Engine/src/Transform.h
 
 CMakeFiles/GameEngine.dir/src/ShaderProgram.cpp.o: /Users/pranavtalatam/Projects/Game_Engine/src/ShaderProgram.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/SDKSettings.json \
@@ -261,6 +262,10 @@ CMakeFiles/GameEngine.dir/src/ShaderProgram.cpp.o: /Users/pranavtalatam/Projects
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_version.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_video.h
 
+CMakeFiles/GameEngine.dir/src/Transform.cpp.o: /Users/pranavtalatam/Projects/Game_Engine/src/Transform.cpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/SDKSettings.json \
+  /Users/pranavtalatam/Projects/Game_Engine/src/Transform.h
+
 CMakeFiles/GameEngine.dir/src/main.cpp.o: /Users/pranavtalatam/Projects/Game_Engine/src/main.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/SDKSettings.json \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
@@ -374,6 +379,7 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: /Users/pranavtalatam/Projects/Game_Eng
   /Users/pranavtalatam/Projects/Game_Engine/src/Mesh.h \
   /Users/pranavtalatam/Projects/Game_Engine/src/Renderer.h \
   /Users/pranavtalatam/Projects/Game_Engine/src/ShaderProgram.h \
+  /Users/pranavtalatam/Projects/Game_Engine/src/Transform.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_assert.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_asyncio.h \
@@ -437,6 +443,8 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: /Users/pranavtalatam/Projects/Game_Eng
 
 
 /Users/pranavtalatam/Projects/Game_Engine/src/main.cpp:
+
+/Users/pranavtalatam/Projects/Game_Engine/src/Transform.cpp:
 
 /opt/homebrew/opt/sdl3/include/SDL3/SDL_version.h:
 
@@ -612,17 +620,13 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: /Users/pranavtalatam/Projects/Game_Eng
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/types.h:
 
+/Users/pranavtalatam/Projects/Game_Engine/src/Transform.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_strings.h:
 
 /opt/homebrew/opt/sdl3/include/SDL3/SDL_properties.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_printf.h:
-
-/opt/homebrew/opt/sdl3/include/SDL3/SDL_power.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint64_t.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/time.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ctype.h:
 
@@ -631,6 +635,10 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: /Users/pranavtalatam/Projects/Game_Eng
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_bounds.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/___wctype.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ct_rune_t.h:
 
@@ -661,10 +669,6 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: /Users/pranavtalatam/Projects/Game_Eng
 /Library/Developer/CommandLineTools/usr/lib/clang/21/include/ptrcheck.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/___wctype.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/runetype.h:
 
@@ -759,6 +763,12 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: /Users/pranavtalatam/Projects/Game_Eng
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ssize_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl3.h:
+
+/opt/homebrew/opt/sdl3/include/SDL3/SDL_power.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/time.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint64_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__wctype.h:
 

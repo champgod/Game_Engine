@@ -13,6 +13,7 @@ add_executable(GameEngine
     src/ShaderProgram.cpp
     src/Mesh.cpp
     src/Renderer.cpp
+    src/Transform.cpp
 )
 
 target_link_libraries(

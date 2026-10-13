@@ -84,9 +84,10 @@ int main() {
         #version 150 core
 
         in vec3 aPosition;
+        uniform vec3 uPosition;
 
         void main() {
-            gl_Position = vec4(aPosition, 1.0);
+            gl_Position = vec4(aPosition + uPosition, 1.0);
         }
     )glsl";
 
@@ -107,6 +108,7 @@ int main() {
         Mesh triangle(vertices, 3);
         Mesh rectangle(rectangleVertices, 6);
         Renderer renderer;
+        Transform triangleTransform;
 
         if (!program.isValid() || !triangle.isValid()) {
             SDL_Log("Shader or mesh program setup failure!");
@@ -130,9 +132,11 @@ int main() {
                 glClearColor(0.08f, 0.10f, 0.16f, 1.0f);
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+                triangleTransform.translate(-0.01f, 0.0f, 0.0f);
+
                 // Draw the triangle.
-                renderer.render(program, triangle);
-                renderer.render(program, rectangle);
+                renderer.render(program, triangle, triangleTransform);
+                renderer.render(program, rectangle, triangleTransform);
 
                 SDL_GL_SwapWindow(window);
             }

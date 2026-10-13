@@ -97,3 +97,13 @@ void ShaderProgram::use() const{ // we use our program if it exists
         glUseProgram(programId);
     }
 }
+
+
+void ShaderProgram::setVec3Uniform(const char* name, float x, float y, float z) const{
+    GLint uniformPos = glGetUniformLocation(programId, name);
+    if(uniformPos != -1){
+        glUniform3f(uniformPos, x, y, z);
+    }else{
+        SDL_Log("Uniform was not found!");
+    }
+}
