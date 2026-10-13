@@ -3,8 +3,10 @@
 #include "Mesh.h"
 #include "ShaderProgram.h"
 #include "Transform.h"
+#include <glm/glm.hpp>
+
 
 class Renderer {
     public:
-        void render(const ShaderProgram& program, const Mesh& mesh, const Transform& transform) const;
+        void render(const ShaderProgram& program, const Mesh& mesh, const Transform& transform, const glm::mat4& projection) const;
 };

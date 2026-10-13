@@ -1148,6 +1148,7 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: \
   /Users/pranavtalatam/Projects/Game_Engine/src/Mesh.h \
   /Users/pranavtalatam/Projects/Game_Engine/src/Renderer.h \
   /Users/pranavtalatam/Projects/Game_Engine/src/Transform.h \
+  /Users/pranavtalatam/Projects/Game_Engine/src/Window.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_stdinc.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_platform_defines.h \
@@ -1209,4 +1210,28 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_timer.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_tray.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_version.h \
-  /opt/homebrew/opt/sdl3/include/SDL3/SDL_oldnames.h
+  /opt/homebrew/opt/sdl3/include/SDL3/SDL_oldnames.h \
+  /opt/homebrew/include/glm/gtc/matrix_transform.hpp \
+  /opt/homebrew/include/glm/gtc/../mat4x4.hpp \
+  /opt/homebrew/include/glm/gtc/../vec2.hpp \
+  /opt/homebrew/include/glm/gtc/../vec3.hpp \
+  /opt/homebrew/include/glm/gtc/../vec4.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_projection.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../gtc/constants.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
+  /opt/homebrew/include/glm/gtc/../ext/../gtc/constants.inl \
+  /opt/homebrew/include/glm/gtc/../ext/../geometric.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../trigonometric.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../matrix.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_projection.inl \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_clip_space.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../ext/scalar_constants.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_clip_space.inl \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_transform.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_transform.inl \
+  /opt/homebrew/include/glm/gtc/matrix_transform.inl \
+  /opt/homebrew/include/glm/gtc/../geometric.hpp \
+  /opt/homebrew/include/glm/gtc/../trigonometric.hpp \
+  /opt/homebrew/include/glm/gtc/../matrix.hpp

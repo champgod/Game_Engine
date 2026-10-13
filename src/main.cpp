@@ -1,62 +1,21 @@
 #include "ShaderProgram.h"
 #include "Mesh.h"
 #include "Renderer.h"
+#include "Window.h"
 
 #include <SDL3/SDL.h>
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
-
+#include <glm/gtc/matrix_transform.hpp>
 
 int main() {
-    if (!SDL_Init(SDL_INIT_VIDEO)) {
-        SDL_Log("SDL initialization failed: %s", SDL_GetError());
-        return 1;
+    Window window("GameEngine", 800, 600);
+    
+    if(!window.isValid()){
+        return 0; // exit early
     }
 
-    // Here's where the SDL Presets go
-    SDL_GL_SetAttribute(
-        SDL_GL_CONTEXT_MAJOR_VERSION, 3
-    );
-    SDL_GL_SetAttribute(
-        SDL_GL_CONTEXT_MINOR_VERSION, 2
-    );
-    SDL_GL_SetAttribute(
-        SDL_GL_CONTEXT_PROFILE_MASK,
-        SDL_GL_CONTEXT_PROFILE_CORE
-    );
-    SDL_GL_SetAttribute(
-        SDL_GL_CONTEXT_FLAGS,
-        SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG
-    );
-    SDL_GL_SetAttribute(
-        SDL_GL_DOUBLEBUFFER, 1
-    );
-    SDL_GL_SetAttribute(
-        SDL_GL_DEPTH_SIZE, 24
-    );
-
-
-    SDL_Window* window = SDL_CreateWindow(
-        "GameEngine",
-        800,
-        600,
-        SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE
-    );
-
-    if (!window) {
-        SDL_Log("Window creation failed: %s", SDL_GetError());
-        SDL_Quit();
-        return 1;
-    }
-
-    SDL_GLContext context = SDL_GL_CreateContext(window);
-    if (context == nullptr) {
-        SDL_Log("OpenGL context failed: %s", SDL_GetError());
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return 1;
-    }
-    SDL_GL_SetSwapInterval(1);
+    glEnable(GL_DEPTH_TEST);
 
     bool running = true;
     SDL_Event event;
@@ -87,9 +46,10 @@ int main() {
 
         in vec3 aPosition;
         uniform mat4 uModel;
+        uniform mat4 uProjection;
 
         void main() {
-            gl_Position = uModel * vec4(aPosition, 1.0);
+            gl_Position = uProjection * uModel * vec4(aPosition, 1.0);
         }
     )glsl";
 
@@ -128,28 +88,29 @@ int main() {
                 int width = 0;
                 int height = 0;
 
-                SDL_GetWindowSizeInPixels(window, &width, &height);
-                glViewport(0, 0, width, height);
+                if (window.getWindowSize(width, height) && width > 0 && height > 0) {
 
-                glClearColor(0.08f, 0.10f, 0.16f, 1.0f);
-                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                    glViewport(0, 0, width, height);
 
-                //triangleTransform.translate(-0.01f, 0.0f, 0.0f);
-               // triangleTransform.setRotation(0.0f, 0.0f, glm::radians(90.0f));
-                triangleTransform.setScale(2.0f, 1.0f, 1.0f);
+                    float aspect = static_cast<float>(width)
+                                / static_cast<float>(height);
 
-                // Draw the triangle.
-                renderer.render(program, triangle, triangleTransform);
-                renderer.render(program, rectangle, triangleTransform);
+                    glm::mat4 projection = glm::perspective(glm::radians(60.0f), aspect, 0.1f, 100.0f);
+            
+                    glClearColor(0.08f, 0.10f, 0.16f, 1.0f);
+                    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-                SDL_GL_SwapWindow(window);
+                    triangleTransform.translate(0.0f, 0.0f, -3.0f);
+                    triangleTransform.setRotation(0.0f, 0.0f, glm::radians(90.0f));
+
+                    renderer.render(program, triangle, triangleTransform, projection);
+                    renderer.render(program, rectangle, triangleTransform, projection);
+
+                    window.swapBuffers();
+                }
             }
         }
     }
-
-    SDL_GL_DestroyContext(context);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
 
     return exitCode;
 }
