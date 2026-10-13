@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(SDL3 REQUIRED CONFIG COMPONENTS SDL3-shared)
 find_package(OpenGL REQUIRED)
+find_package(glm CONFIG REQUIRED)
 
 add_executable(GameEngine
     src/main.cpp
@@ -20,4 +21,5 @@ target_link_libraries(
     GameEngine PRIVATE 
         SDL3::SDL3
         OpenGL::GL
+        glm::glm
 )

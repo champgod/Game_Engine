@@ -1,4 +1,4 @@
-
+#include <glm/glm.hpp>
 
 class Transform{
     public:
@@ -16,6 +16,8 @@ class Transform{
         float getRadY() const;
         float getRadZ() const;
 
+        glm::mat4 getModelMatrix() const;
+
     private:
         float posX = 0.0f;
         float posY = 0.0f;
@@ -24,6 +26,5 @@ class Transform{
         float radX = 0.0f;
         float radY = 0.0f;
         float radZ = 0.0f;
-
 
 };

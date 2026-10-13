@@ -1,4 +1,5 @@
 #include "Transform.h"
+#include <glm/gtc/matrix_transform.hpp>
 
 void Transform::translate(float dx, float dy, float dz){
     posX += dx;
@@ -46,4 +47,15 @@ float Transform::getRadY() const{
 
 float Transform::getRadZ() const{
     return radZ;
+}
+
+glm::mat4 Transform::getModelMatrix() const{
+    glm::mat4 model(1.0f); // This creates a identity matrix (just diagonal of 1s)
+
+    model = glm::translate(model, glm::vec3(posX, posY, posZ)); // for translations
+    model = glm::rotate(model, radX, glm::vec3(1.0f, 0.0f, 0.0f)); // for rotation about x axis
+    model = glm::rotate(model, radY, glm::vec3(0.0f, 1.0f, 0.0f)); // for rotation about y axis
+    model = glm::rotate(model, radZ, glm::vec3(0.0f, 0.0f, 1.0f)); // for rotation about z axis
+
+    return model;
 }

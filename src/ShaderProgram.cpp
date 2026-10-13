@@ -1,5 +1,7 @@
 #include "ShaderProgram.h"
 #include <SDL3/SDL.h>
+#include <glm/gtc/type_ptr.hpp>
+
 
 
 GLuint ShaderProgram::compileShader(GLenum type, const char* source){ // Compiling shader
@@ -98,12 +100,22 @@ void ShaderProgram::use() const{ // we use our program if it exists
     }
 }
 
-
+/*
 void ShaderProgram::setVec3Uniform(const char* name, float x, float y, float z) const{
     GLint uniformPos = glGetUniformLocation(programId, name);
     if(uniformPos != -1){
         glUniform3f(uniformPos, x, y, z);
     }else{
         SDL_Log("Uniform was not found!");
+    }
+}
+    */
+
+void ShaderProgram::setMat4Uniform(const char* name, const glm::mat4& matrix) const{
+    GLint uniformPos = glGetUniformLocation(programId, name); 
+    if(uniformPos != -1){
+        glUniformMatrix4fv(uniformPos, 1, GL_FALSE, glm::value_ptr(matrix));
+    }else{
+        SDL_Log("Uniform matrix was not found!");
     }
 }

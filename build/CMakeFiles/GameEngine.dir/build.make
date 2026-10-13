@@ -161,6 +161,7 @@ GameEngine: CMakeFiles/GameEngine.dir/src/Transform.cpp.o
 GameEngine: CMakeFiles/GameEngine.dir/build.make
 GameEngine: /opt/homebrew/opt/sdl3/lib/libSDL3.0.dylib
 GameEngine: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework
+GameEngine: /opt/homebrew/lib/libglm.dylib
 GameEngine: CMakeFiles/GameEngine.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pranavtalatam/Projects/Game_Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable GameEngine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GameEngine.dir/link.txt --verbose=$(VERBOSE)
