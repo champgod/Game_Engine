@@ -84,10 +84,10 @@ int main() {
         #version 150 core
 
         in vec3 aPosition;
-        uniform vec3 uPosition;
+        uniform vec3 uTranslation;
 
         void main() {
-            gl_Position = vec4(aPosition + uPosition, 1.0);
+            gl_Position = vec4(aPosition + uTranslation, 1.0);
         }
     )glsl";
 
