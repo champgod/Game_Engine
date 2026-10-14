@@ -102,10 +102,10 @@ void ShaderProgram::use() const{ // we use our program if it exists
 }
 
 
-void ShaderProgram::setVec3Uniform(const char* name, float x, float y, float z) const{
+void ShaderProgram::setVec3Uniform(const char* name, const glm::vec3& vec) const{
     GLint uniformPos = glGetUniformLocation(programId, name);
     if(uniformPos != -1){
-        glUniform3f(uniformPos, x, y, z);
+        glUniform3f(uniformPos, vec.x, vec.y, vec.z);
     }else{
         SDL_Log("Uniform was not found!");
     }

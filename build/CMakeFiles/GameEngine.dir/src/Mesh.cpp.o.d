@@ -1,7 +1,7 @@
 CMakeFiles/GameEngine.dir/src/Mesh.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/SDKSettings.json \
   /Users/pranavtalatam/Projects/Game_Engine/src/Mesh.cpp \
-  /Users/pranavtalatam/Projects/Game_Engine/src/Mesh.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Mesh.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl3.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gltypes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdint.h \

@@ -17,7 +17,7 @@ class ShaderProgram{
         bool isValid() const; // checks that the program is valid
         void use() const; // method call that makes it so we use the program as needed
 
-        void setVec3Uniform(const char* name, float x, float y, float z) const;
+        void setVec3Uniform(const char* name, const glm::vec3& vec) const;
         void setMat4Uniform(const char* name, const glm::mat4& matrix) const;
 
     private:

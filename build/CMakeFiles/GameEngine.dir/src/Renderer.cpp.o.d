@@ -1,7 +1,7 @@
 CMakeFiles/GameEngine.dir/src/Renderer.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/SDKSettings.json \
   /Users/pranavtalatam/Projects/Game_Engine/src/Renderer.cpp \
-  /Users/pranavtalatam/Projects/Game_Engine/src/Renderer.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Renderer.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl3.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gltypes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdint.h \
@@ -41,8 +41,8 @@ CMakeFiles/GameEngine.dir/src/Renderer.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h \
-  /Users/pranavtalatam/Projects/Game_Engine/src/Mesh.h \
-  /Users/pranavtalatam/Projects/Game_Engine/src/ShaderProgram.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Mesh.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/ShaderProgram.h \
   /opt/homebrew/include/glm/glm.hpp \
   /opt/homebrew/include/glm/detail/_fixes.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cmath \
@@ -1147,4 +1147,5 @@ CMakeFiles/GameEngine.dir/src/Renderer.cpp.o: \
   /opt/homebrew/include/glm/vector_relational.hpp \
   /opt/homebrew/include/glm/integer.hpp \
   /opt/homebrew/include/glm/detail/func_integer.inl \
-  /Users/pranavtalatam/Projects/Game_Engine/src/Transform.h
+  /Users/pranavtalatam/Projects/Game_Engine/header/Transform.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Light.h

@@ -16,6 +16,7 @@ add_executable(GameEngine
     src/Renderer.cpp
     src/Transform.cpp
     src/Window.cpp
+    src/Light.cpp
 )
 
 target_link_libraries(
@@ -23,4 +24,8 @@ target_link_libraries(
         SDL3::SDL3
         OpenGL::GL
         glm::glm
+)
+
+target_include_directories(GameEngine PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/header
 )

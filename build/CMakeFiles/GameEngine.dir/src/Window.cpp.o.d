@@ -1,7 +1,7 @@
 CMakeFiles/GameEngine.dir/src/Window.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/SDKSettings.json \
   /Users/pranavtalatam/Projects/Game_Engine/src/Window.cpp \
-  /Users/pranavtalatam/Projects/Game_Engine/src/Window.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Window.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_stdinc.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_platform_defines.h \

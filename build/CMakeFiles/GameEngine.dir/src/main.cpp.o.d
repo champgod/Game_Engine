@@ -1,7 +1,7 @@
 CMakeFiles/GameEngine.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/SDKSettings.json \
   /Users/pranavtalatam/Projects/Game_Engine/src/main.cpp \
-  /Users/pranavtalatam/Projects/Game_Engine/src/ShaderProgram.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/ShaderProgram.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl3.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gltypes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdint.h \
@@ -1145,10 +1145,11 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: \
   /opt/homebrew/include/glm/vector_relational.hpp \
   /opt/homebrew/include/glm/integer.hpp \
   /opt/homebrew/include/glm/detail/func_integer.inl \
-  /Users/pranavtalatam/Projects/Game_Engine/src/Mesh.h \
-  /Users/pranavtalatam/Projects/Game_Engine/src/Renderer.h \
-  /Users/pranavtalatam/Projects/Game_Engine/src/Transform.h \
-  /Users/pranavtalatam/Projects/Game_Engine/src/Window.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Mesh.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Renderer.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Transform.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Light.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Window.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_stdinc.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_platform_defines.h \

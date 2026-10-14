@@ -51,53 +51,53 @@ int main() {
 
 
         // Back face (-Z)
-        -0.5f, -0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
+        -0.5f,  0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
+        0.5f,  0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
 
-        -0.5f, -0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
+        0.5f,  0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
+        0.5f, -0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
 
 
         // Right face (+X)
-        0.5f, -0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,        1.0f, 0.0f, 0.0f,
+        0.5f, -0.5f, -0.5f,        1.0f, 0.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,        1.0f, 0.0f, 0.0f,
 
-        0.5f, -0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,        1.0f, 0.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,        1.0f, 0.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,        1.0f, 0.0f, 0.0f,
 
 
         // Left face (-X)
-        -0.5f, -0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,        -1.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,        -1.0f, 0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,        -1.0f, 0.0f, 0.0f,
 
-        -0.5f, -0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,        -1.0f, 0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,        -1.0f, 0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,        -1.0f, 0.0f, 0.0f,
 
 
         // Top face (+Y)
-        -0.5f,  0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,        0.0f, 1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,        0.0f, 1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,        0.0f, 1.0f, 0.0f,
 
-        -0.5f,  0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,        0.0f, 1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,        0.0f, 1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,        0.0f, 1.0f, 0.0f,
 
 
         // Bottom face (-Y)
-        -0.5f, -0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,        0.0f, -1.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f,
+        0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f,
 
-        -0.5f, -0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,        0.0f, 0.0f, 1.0f
+        -0.5f, -0.5f,  0.5f,        0.0f, -1.0f, 0.0f,
+        0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,        0.0f, -1.0f, 0.0f
     };// fully pasted from chatgpt ( i get it i just don't want to type all that out )
 
     
@@ -126,6 +126,7 @@ int main() {
 
     const char* fragmentShaderSource = R"glsl(
         #version 150 core
+
         in vec3 vFragPos;
         in vec3 vNormal;
 
@@ -156,6 +157,7 @@ int main() {
 
     {
         ShaderProgram program(vertexShaderSource, fragmentShaderSource); // Create a program object
+        Light light(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 
         Mesh cube(cubeVertices, 36);
         Mesh triangle(vertices, 3);
@@ -198,10 +200,10 @@ int main() {
                     //triangleTransform.translate(0.0f, 0.0f, -3.0f);
                     //triangleTransform.setRotation(0.0f, 0.0f, glm::radians(90.0f));
 
-                    cubeTransform.rotate(glm::radians(1.0f), glm::radians(1.0f), 0.0f);
+                    cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
 
 
-                    renderer.render(program, cube, cubeTransform, projection);
+                    renderer.render(program, cube, cubeTransform, projection, light);
                     window.swapBuffers();
                 }
             }
