@@ -61,6 +61,7 @@ ShaderProgram::ShaderProgram(const char* vertexSource, const char* fragmentSourc
     glAttachShader(programId, fragmentShader); // attach fragment shader
 
     glBindAttribLocation(programId, 0, "aPosition"); // Binds attribute location
+    glBindAttribLocation(programId, 1, "aNormal"); //Binds normal locations
     glBindFragDataLocation(programId, 0, "outColor"); // Binds color location
     glLinkProgram(programId); // Links the program
 
@@ -100,7 +101,7 @@ void ShaderProgram::use() const{ // we use our program if it exists
     }
 }
 
-/*
+
 void ShaderProgram::setVec3Uniform(const char* name, float x, float y, float z) const{
     GLint uniformPos = glGetUniformLocation(programId, name);
     if(uniformPos != -1){
@@ -109,7 +110,7 @@ void ShaderProgram::setVec3Uniform(const char* name, float x, float y, float z) 
         SDL_Log("Uniform was not found!");
     }
 }
-    */
+    
 
 void ShaderProgram::setMat4Uniform(const char* name, const glm::mat4& matrix) const{
     GLint uniformPos = glGetUniformLocation(programId, name); 
