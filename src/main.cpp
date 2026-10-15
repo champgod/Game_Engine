@@ -163,7 +163,7 @@ int main() {
 
     {
         ShaderProgram program(vertexShaderSource, fragmentShaderSource); // Create a program object
-        Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+        Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(0.5f, -1.0f, 1.0f));
         Camera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f));
 
         Mesh cube(cubeVertices, 36);
@@ -211,6 +211,7 @@ int main() {
                     camera.reset();
                 }
                 if (keys[SDL_SCANCODE_L]){
+                    SDL_Log("New position saved!");
                     camera.save();
                 }
 
@@ -232,6 +233,7 @@ int main() {
                     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
                     cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
+    
                     light.setPosition(camera.getPosition());
                     renderer.render(program, cube, cubeTransform, projection, light, camera);
                     window.swapBuffers();

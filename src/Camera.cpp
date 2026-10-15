@@ -6,6 +6,7 @@ Camera::Camera(glm::vec3 position, glm::vec3 direction){
     cameraPosition = position; //sets camera position
     cameraDirection = direction; //sets camera direction
     resetPosition = position; //sets the reset position as where the camera is initially created
+    //resetDirection = direction;
 }
 
 glm::vec3 Camera::getPosition() const{
@@ -47,11 +48,6 @@ void Camera::move(MovementDirection direction, float deltaTime){
 void Camera::processMouseMovement(float xOffset, float yOffset){
     yaw += 0.5 * xOffset;
     pitch -= 0.5 * yOffset;
-    if(yaw >= 89){
-        yaw = 89;
-    }else if(yaw <= -89){
-        yaw = -89;
-    }
     if(pitch >= 89){
         pitch = 89;
     }else if(pitch <= -89){
@@ -65,10 +61,12 @@ void Camera::processMouseMovement(float xOffset, float yOffset){
 
 void Camera::save(){
     resetPosition = cameraPosition;
+    //resetDirection = cameraDirection;
 }
 
 void Camera::reset(){
     cameraPosition = resetPosition;
+    //cameraDirection = resetDirection;
 }
 
 glm::mat4 Camera::getViewMatrix() const{

@@ -33,4 +33,5 @@ class Camera{
         glm::vec3 cameraPosition;
         glm::vec3 cameraDirection;
         glm::vec3 resetPosition; // this one's just so we can reset the original camera position (in case we get lost - don't know why we would but i know i would)
+        //glm::vec3 resetDirection;
 };
