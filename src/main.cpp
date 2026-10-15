@@ -10,6 +10,11 @@
 
 int main() {
     Window window("GameEngine", 800, 600); // Create an SDL Window that is already resizable by default
+
+    if (!window.setRelativeMouseMode(true)) {
+        SDL_Log("Failed to enable relative mouse mode: %s",
+                SDL_GetError());
+    }
     
     if(!window.isValid()){
         return 0; // exit early
@@ -182,6 +187,9 @@ int main() {
                         event.key.key == SDLK_ESCAPE)) {
                         running = false;
                     }
+                    if (event.type == SDL_EVENT_MOUSE_MOTION) {
+                        camera.processMouseMovement(event.motion.xrel, event.motion.yrel);
+                    }   
                 }
                 const bool* keys = SDL_GetKeyboardState(nullptr);
                 Uint64 currentTicks = SDL_GetTicks();
@@ -199,6 +207,15 @@ int main() {
                 if (keys[SDL_SCANCODE_D]) {
                     camera.move(MovementDirection::Right, deltaTime);
                 }
+                if (keys[SDL_SCANCODE_R]){
+                    camera.reset();
+                }
+                if (keys[SDL_SCANCODE_L]){
+                    camera.save();
+                }
+
+
+
                 int width = 0;
                 int height = 0;
 
@@ -215,7 +232,7 @@ int main() {
                     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
                     cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
-
+                    light.setPosition(camera.getPosition());
                     renderer.render(program, cube, cubeTransform, projection, light, camera);
                     window.swapBuffers();
                 }

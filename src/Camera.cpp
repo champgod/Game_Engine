@@ -1,5 +1,6 @@
 #include "Camera.h"
 #include <glm/gtc/matrix_transform.hpp>
+#include <cmath>
 
 Camera::Camera(glm::vec3 position, glm::vec3 direction){
     cameraPosition = position; //sets camera position
@@ -41,6 +42,29 @@ void Camera::move(MovementDirection direction, float deltaTime){
             cameraPosition += (rightLeft * deltaTime * cameraSpeed);
             break;
         }
+}
+
+void Camera::processMouseMovement(float xOffset, float yOffset){
+    yaw += 0.5 * xOffset;
+    pitch -= 0.5 * yOffset;
+    if(yaw >= 89){
+        yaw = 89;
+    }else if(yaw <= -89){
+        yaw = -89;
+    }
+    if(pitch >= 89){
+        pitch = 89;
+    }else if(pitch <= -89){
+        pitch = -89;
+    }
+    float radYaw = glm::radians(yaw);
+    float radPitch = glm::radians(pitch);
+
+    cameraDirection = glm::vec3(std::cos(radYaw) * std::cos(radPitch), std::sin(radPitch), std::sin(radYaw) * std::cos(radPitch));
+}
+
+void Camera::save(){
+    resetPosition = cameraPosition;
 }
 
 void Camera::reset(){

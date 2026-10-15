@@ -19,12 +19,16 @@ class Camera{
         void setDirection(glm::vec3 direction);
 
         void move(MovementDirection direction, float deltaTime);
+        void processMouseMovement(float xOffset, float yOffset);
 
-        void reset();
+        void save(); // Save position
+        void reset(); // Load position
 
         glm::mat4 getViewMatrix() const;
 
     private:
+        float yaw = -90.0f; //euler angle for horizontal 
+        float pitch = 0.0f; // euler angle for vertical
         glm::vec3 worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
         glm::vec3 cameraPosition;
         glm::vec3 cameraDirection;

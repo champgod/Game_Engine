@@ -11,6 +11,7 @@ class Window {
         void swapBuffers() const;
 
         bool getWindowSize(int& width, int& height) const;
+        bool setRelativeMouseMode(bool enabled);
 
 
     private:

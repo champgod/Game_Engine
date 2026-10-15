@@ -1,4 +1,5 @@
 #include "Window.h"
+#include <SDL3/SDL.h>
 
 Window::Window(const char* name, int width, int height){
     if (!SDL_Init(SDL_INIT_VIDEO)) {
@@ -59,4 +60,8 @@ bool Window::getWindowSize(int& width, int& height) const{
         return false;
     }
     return SDL_GetWindowSizeInPixels(window, &width, &height);
+}
+
+bool Window::setRelativeMouseMode(bool enabled) {
+    return SDL_SetWindowRelativeMouseMode(window, enabled);
 }
