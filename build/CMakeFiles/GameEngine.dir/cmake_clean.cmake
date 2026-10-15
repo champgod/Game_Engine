@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/GameEngine.dir/src/Camera.cpp.o"
+  "CMakeFiles/GameEngine.dir/src/Camera.cpp.o.d"
   "CMakeFiles/GameEngine.dir/src/Light.cpp.o"
   "CMakeFiles/GameEngine.dir/src/Light.cpp.o.d"
   "CMakeFiles/GameEngine.dir/src/Mesh.cpp.o"

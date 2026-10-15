@@ -2,6 +2,7 @@
 #include "Mesh.h"
 #include "Renderer.h"
 #include "Window.h"
+#include "Light.h"
 
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
@@ -108,6 +109,7 @@ int main() {
         in vec3 aPosition;
         in vec3 aNormal;
 
+        uniform mat4 uView;
         uniform mat4 uModel;
         uniform mat4 uProjection;
 
@@ -120,7 +122,7 @@ int main() {
             vFragPos = worldPosition.xyz;
             vNormal = mat3(transpose(inverse(uModel))) * aNormal;
 
-            gl_Position = uProjection * worldPosition;
+            gl_Position =  uProjection * uView * worldPosition; // P V M v (projection * view * model * vector)
         }
     )glsl";
 
@@ -137,19 +139,18 @@ int main() {
         uniform vec3 objectColor;
 
         void main() {
-            // Direction perpendicular to the surface
-            vec3 N = normalize(vNormal);
+            float ambientStrength = 0.1;
+            vec3 ambient = ambientStrength * lightColor;
 
-            // Direction from the surface toward the light
+            vec3 N = normalize(vNormal);
             vec3 L = normalize(lightPos - vFragPos);
 
-            // Calculate diffuse intensity
             float diffuseStrength = max(dot(N, L), 0.0);
+            vec3 diffuse = diffuseStrength * lightColor;
 
-            // Combine lighting with the object's color
-            vec3 diffuse = diffuseStrength * lightColor * objectColor;
-
-            outColor = vec4(diffuse, 1.0);
+            // Combine ambient and diffuse lighting with the object's color
+            vec3 result = (ambient + diffuse) * objectColor;
+            outColor = vec4(result, 1.0);
         }
     )glsl";
 
@@ -157,23 +158,23 @@ int main() {
 
     {
         ShaderProgram program(vertexShaderSource, fragmentShaderSource); // Create a program object
-        Light light(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+        Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+        Camera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f));
 
         Mesh cube(cubeVertices, 36);
-        Mesh triangle(vertices, 3);
-        Mesh rectangle(rectangleVertices, 6);
         Renderer renderer;
-        Transform triangleTransform;
+        
         Transform cubeTransform;
         cubeTransform.setPosition(0.0f, 0.0f, -3.0f);
 
 
 
-        if (!program.isValid() || !triangle.isValid()) {
+        if (!program.isValid() || !cube.isValid()) {
             SDL_Log("Shader or mesh program setup failure!");
             exitCode = 1;
         }
         else{
+            Uint64 previousTicks = SDL_GetTicks();
             while (running) {
                 while (SDL_PollEvent(&event)) {
                     if (event.type == SDL_EVENT_QUIT ||
@@ -181,6 +182,22 @@ int main() {
                         event.key.key == SDLK_ESCAPE)) {
                         running = false;
                     }
+                }
+                const bool* keys = SDL_GetKeyboardState(nullptr);
+                Uint64 currentTicks = SDL_GetTicks();
+                float deltaTime = (currentTicks - previousTicks) / 1000.0f;
+                previousTicks = currentTicks;
+                if (keys[SDL_SCANCODE_W]) {
+                    camera.move(MovementDirection::Forward, deltaTime);
+                }
+                if (keys[SDL_SCANCODE_S]) {
+                    camera.move(MovementDirection::Backward, deltaTime);
+                }
+                if (keys[SDL_SCANCODE_A]) {
+                    camera.move(MovementDirection::Left, deltaTime);
+                }
+                if (keys[SDL_SCANCODE_D]) {
+                    camera.move(MovementDirection::Right, deltaTime);
                 }
                 int width = 0;
                 int height = 0;
@@ -197,13 +214,9 @@ int main() {
                     glClearColor(0.08f, 0.10f, 0.16f, 1.0f);
                     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-                    //triangleTransform.translate(0.0f, 0.0f, -3.0f);
-                    //triangleTransform.setRotation(0.0f, 0.0f, glm::radians(90.0f));
-
                     cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
 
-
-                    renderer.render(program, cube, cubeTransform, projection, light);
+                    renderer.render(program, cube, cubeTransform, projection, light, camera);
                     window.swapBuffers();
                 }
             }

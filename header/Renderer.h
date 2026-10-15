@@ -4,10 +4,12 @@
 #include "ShaderProgram.h"
 #include "Transform.h"
 #include "Light.h"
+#include "Camera.h"
 #include <glm/glm.hpp>
 
 
 class Renderer {
     public:
-        void render(const ShaderProgram& program, const Mesh& mesh, const Transform& transform, const glm::mat4& projection, const Light& light) const;
+        void render(const ShaderProgram& program, const Mesh& mesh, const Transform& transform, 
+            const glm::mat4& projection, const Light& light, const Camera& camera) const;
 };

@@ -17,6 +17,7 @@ add_executable(GameEngine
     src/Transform.cpp
     src/Window.cpp
     src/Light.cpp
+    src/Camera.cpp
 )
 
 target_link_libraries(

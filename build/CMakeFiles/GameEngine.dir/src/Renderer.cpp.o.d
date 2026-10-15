@@ -1148,4 +1148,5 @@ CMakeFiles/GameEngine.dir/src/Renderer.cpp.o: \
   /opt/homebrew/include/glm/integer.hpp \
   /opt/homebrew/include/glm/detail/func_integer.inl \
   /Users/pranavtalatam/Projects/Game_Engine/header/Transform.h \
-  /Users/pranavtalatam/Projects/Game_Engine/header/Light.h
+  /Users/pranavtalatam/Projects/Game_Engine/header/Light.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Camera.h
