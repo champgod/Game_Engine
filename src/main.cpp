@@ -163,7 +163,7 @@ int main() {
 
     {
         ShaderProgram program(vertexShaderSource, fragmentShaderSource); // Create a program object
-        Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(0.5f, -1.0f, 1.0f));
+        Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(1.0f, 1.0f, 1.0f));
         Camera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f));
 
         Mesh cube(cubeVertices, 36);
