@@ -12,6 +12,15 @@ bool Input::processEvent(Camera& camera){
         if (event.type == SDL_EVENT_MOUSE_MOTION) {
             camera.processMouseMovement(event.motion.xrel, event.motion.yrel);
         }   
+        if (event.type == SDL_EVENT_KEY_DOWN){
+            if (event.key.key == SDLK_R){
+                camera.reset();
+            }
+            if (event.key.key == SDLK_L){
+                SDL_Log("New position saved!");
+                camera.save();
+            }
+        }
     } 
 
     return running;
@@ -31,12 +40,5 @@ void Input::updateKeyInput(Camera& camera, float deltaTime){
     }
     if (keys[SDL_SCANCODE_D]) {
         camera.move(MovementDirection::Right, deltaTime);
-    }
-    if (keys[SDL_SCANCODE_R]){
-        camera.reset();
-    }
-    if (keys[SDL_SCANCODE_L]){
-        SDL_Log("New position saved!");
-        camera.save();
     }
 }
