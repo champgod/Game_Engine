@@ -1,11 +1,9 @@
 #pragma once
 
+#include "Camera.h"
 
 class Input{
     public:
-        void keyInput();
-        void mouseInput();
-
-    private:
-
+        bool processEvent(Camera& camera);
+        void updateKeyInput(Camera& camera, float deltaTime);
 };

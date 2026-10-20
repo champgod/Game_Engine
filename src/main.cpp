@@ -3,6 +3,7 @@
 #include "Renderer.h"
 #include "Window.h"
 #include "Light.h"
+#include "Input.h"
 
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
@@ -163,14 +164,15 @@ int main() {
 
     {
         ShaderProgram program(vertexShaderSource, fragmentShaderSource); // Create a program object
-        Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(1.0f, 1.0f, 1.0f));
-        Camera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f));
+        Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(1.0f, 1.0f, 1.0f)); // Create light object
+        Camera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f)); // Create camera object
 
-        Mesh cube(cubeVertices, 36);
-        Renderer renderer;
+        Mesh cube(cubeVertices, 36); // Create a cube mesh
+        Renderer renderer; // Create renderer object
         
-        Transform cubeTransform;
-        cubeTransform.setPosition(0.0f, 0.0f, -3.0f);
+        Transform cubeTransform; // Create cube transform object
+        cubeTransform.setPosition(0.0f, 0.0f, -3.0f); // Set cube position to (0, 0, -3)
+        Input input; // Create an input object
 
 
 
@@ -181,40 +183,12 @@ int main() {
         else{
             Uint64 previousTicks = SDL_GetTicks();
             while (running) {
-                while (SDL_PollEvent(&event)) {
-                    if (event.type == SDL_EVENT_QUIT ||
-                        (event.type == SDL_EVENT_KEY_DOWN &&
-                        event.key.key == SDLK_ESCAPE)) {
-                        running = false;
-                    }
-                    if (event.type == SDL_EVENT_MOUSE_MOTION) {
-                        camera.processMouseMovement(event.motion.xrel, event.motion.yrel);
-                    }   
-                }
-                const bool* keys = SDL_GetKeyboardState(nullptr);
                 Uint64 currentTicks = SDL_GetTicks();
                 float deltaTime = (currentTicks - previousTicks) / 1000.0f;
                 previousTicks = currentTicks;
-                if (keys[SDL_SCANCODE_W]) {
-                    camera.move(MovementDirection::Forward, deltaTime);
-                }
-                if (keys[SDL_SCANCODE_S]) {
-                    camera.move(MovementDirection::Backward, deltaTime);
-                }
-                if (keys[SDL_SCANCODE_A]) {
-                    camera.move(MovementDirection::Left, deltaTime);
-                }
-                if (keys[SDL_SCANCODE_D]) {
-                    camera.move(MovementDirection::Right, deltaTime);
-                }
-                if (keys[SDL_SCANCODE_R]){
-                    camera.reset();
-                }
-                if (keys[SDL_SCANCODE_L]){
-                    SDL_Log("New position saved!");
-                    camera.save();
-                }
 
+                running = input.processEvent(camera);
+                input.updateKeyInput(camera, deltaTime);
 
 
                 int width = 0;
