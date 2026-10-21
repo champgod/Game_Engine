@@ -22,13 +22,11 @@ bool Input::processEvent(Camera& camera){
             }
         }
     } 
-
     return running;
 }
 
 void Input::updateKeyInput(Camera& camera, float deltaTime){
     const bool* keys = SDL_GetKeyboardState(nullptr);
-
      if (keys[SDL_SCANCODE_W]) {
         camera.move(MovementDirection::Forward, deltaTime);
     }
