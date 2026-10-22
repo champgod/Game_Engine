@@ -13,6 +13,9 @@ class Texture{
         void bind() const; // Bind texture
         bool isValid() const; // Is the texture valid? 
 
+        GLint getInternalFormat(int nrChannels) const;
+        GLenum getFormat(int nrChannels) const;
+
         int getWidth() const;
         int getHeight() const;
 
