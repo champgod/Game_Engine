@@ -1,4 +1,5 @@
 #include "Texture.h"
+#include "stb_image.h"
 
 Texture::~Texture(){
     if(textureId != 0){
@@ -11,7 +12,9 @@ bool Texture::loadImage(const std::string& path){
     int nrChannels = 0;
     unsigned char *data = stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
 
-
+    if (data == nullptr){
+        return false;
+    }
 }
 
 void Texture::bind() const{
