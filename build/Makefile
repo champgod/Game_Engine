@@ -273,6 +273,30 @@ src/ShaderProgram.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/ShaderProgram.cpp.s
 .PHONY : src/ShaderProgram.cpp.s
 
+src/Texture.o: src/Texture.cpp.o
+.PHONY : src/Texture.o
+
+# target to build an object file
+src/Texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/Texture.cpp.o
+.PHONY : src/Texture.cpp.o
+
+src/Texture.i: src/Texture.cpp.i
+.PHONY : src/Texture.i
+
+# target to preprocess a source file
+src/Texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/Texture.cpp.i
+.PHONY : src/Texture.cpp.i
+
+src/Texture.s: src/Texture.cpp.s
+.PHONY : src/Texture.s
+
+# target to generate assembly for a file
+src/Texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/Texture.cpp.s
+.PHONY : src/Texture.cpp.s
+
 src/Transform.o: src/Transform.cpp.o
 .PHONY : src/Transform.o
 
@@ -396,6 +420,9 @@ help:
 	@echo "... src/ShaderProgram.o"
 	@echo "... src/ShaderProgram.i"
 	@echo "... src/ShaderProgram.s"
+	@echo "... src/Texture.o"
+	@echo "... src/Texture.i"
+	@echo "... src/Texture.s"
 	@echo "... src/Transform.o"
 	@echo "... src/Transform.i"
 	@echo "... src/Transform.s"

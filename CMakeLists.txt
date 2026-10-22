@@ -20,6 +20,7 @@ add_executable(GameEngine
     src/Camera.cpp
     src/Input.cpp
     src/stb_image.cpp
+    src/Texture.cpp
 )
 
 target_link_libraries(
