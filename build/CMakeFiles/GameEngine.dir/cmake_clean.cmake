@@ -17,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GameEngine.dir/src/Window.cpp.o.d"
   "CMakeFiles/GameEngine.dir/src/main.cpp.o"
   "CMakeFiles/GameEngine.dir/src/main.cpp.o.d"
+  "CMakeFiles/GameEngine.dir/src/stb_image.cpp.o"
+  "CMakeFiles/GameEngine.dir/src/stb_image.cpp.o.d"
   "GameEngine"
   "GameEngine.pdb"
 )

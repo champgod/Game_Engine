@@ -11,7 +11,10 @@ Texture::~Texture(){
 
 
 bool Texture::loadImage(const std::string& path){
-    unsigned char *data = stbi_load(path.c_str(), &width, &height, 3, 0);
+    int nrChannels = 0;
+    unsigned char *data = stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
+
+    
 }
 
 void Texture::bind() const{

@@ -17,6 +17,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/pranavtalatam/Projects/Game_Engine/src/Transform.cpp" "CMakeFiles/GameEngine.dir/src/Transform.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Transform.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Window.cpp" "CMakeFiles/GameEngine.dir/src/Window.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Window.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/main.cpp" "CMakeFiles/GameEngine.dir/src/main.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/main.cpp.o.d"
+  "/Users/pranavtalatam/Projects/Game_Engine/src/stb_image.cpp" "CMakeFiles/GameEngine.dir/src/stb_image.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/stb_image.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
