@@ -62,6 +62,7 @@ ShaderProgram::ShaderProgram(const char* vertexSource, const char* fragmentSourc
 
     glBindAttribLocation(programId, 0, "aPosition"); // Binds attribute location
     glBindAttribLocation(programId, 1, "aNormal"); //Binds normal locations
+    glBindAttribLocation(programId, 2, "aTexCoord"); // Binds the texture coordinates
     glBindFragDataLocation(programId, 0, "outColor"); // Binds color location
     glLinkProgram(programId); // Links the program
 
@@ -118,5 +119,14 @@ void ShaderProgram::setMat4Uniform(const char* name, const glm::mat4& matrix) co
         glUniformMatrix4fv(uniformPos, 1, GL_FALSE, glm::value_ptr(matrix));
     }else{
         SDL_Log("Uniform matrix was not found!");
+    }
+}
+
+void ShaderProgram::setInt(const std::string& name, int value) const {
+    GLint uniformPos = glGetUniformLocation(programId, name.c_str());
+    if (uniformPos != -1) {
+        glUniform1i(uniformPos, value);
+    } else {
+        SDL_Log("Uniform not found: %s", name.c_str());
     }
 }

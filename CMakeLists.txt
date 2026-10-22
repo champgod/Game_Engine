@@ -33,3 +33,10 @@ target_link_libraries(
 target_include_directories(GameEngine PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/header
 )
+
+add_custom_command(TARGET GameEngine POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_CURRENT_SOURCE_DIR}/assets"
+        "$<TARGET_FILE_DIR:GameEngine>/assets"
+    COMMENT "Copying game assets..."
+)

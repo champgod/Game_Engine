@@ -4,10 +4,12 @@
 #include "Window.h"
 #include "Light.h"
 #include "Input.h"
+#include "Texture.h"
 
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <filesystem>
 
 int main() {
     Window window("GameEngine", 800, 600); // Create an SDL Window that is already resizable by default
@@ -26,85 +28,62 @@ int main() {
     bool running = true;
     SDL_Event event;
 
-    // 1. Define the triangle's coordinates.
-    const float vertices[] = {
-        -0.0f, -0.5f, 0.0f,
-        1.0f, -0.5f, 0.0f,
-        0.5f,  0.5f, 0.0f
-    };
-
-    const float rectangleVertices[] = {
-    // Triangle 1
-        -1.0f, -0.5f, 0.0f,
-        0.0f, -0.5f, 0.0f,
-        0.0f,  0.5f, 0.0f,
-
-        // Triangle 2
-        -1.0f, -0.5f, 0.0f,
-        0.0f,  0.5f, 0.0f,
-        -1.0f,  0.5f, 0.0f
-    };
-
+    
     const float cubeVertices[] = {
         // Front face (+Z)
-        // Position                 Normal
-        -0.5f, -0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
+        // Position                  Normal                UV
+        -0.5f, -0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   0.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   1.0f, 1.0f,
 
-        -0.5f, -0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,        0.0f, 0.0f, 1.0f,
-
+        -0.5f, -0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   0.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   0.0f, 1.0f,
 
         // Back face (-Z)
-        -0.5f, -0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
-        -0.5f,  0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
-        0.5f,  0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
+        -0.5f, -0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   1.0f, 1.0f,
+        0.5f,  0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   0.0f, 1.0f,
 
-        -0.5f, -0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
-        0.5f,  0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
-        0.5f, -0.5f, -0.5f,        0.0f, 0.0f, -1.0f,
-
+        -0.5f, -0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   0.0f, 0.0f,
 
         // Right face (+X)
-        0.5f, -0.5f,  0.5f,        1.0f, 0.0f, 0.0f,
-        0.5f, -0.5f, -0.5f,        1.0f, 0.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,        1.0f, 0.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,         1.0f,  0.0f,  0.0f,   0.0f, 0.0f,
+        0.5f, -0.5f, -0.5f,         1.0f,  0.0f,  0.0f,   1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,         1.0f,  0.0f,  0.0f,   1.0f, 1.0f,
 
-        0.5f, -0.5f,  0.5f,        1.0f, 0.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,        1.0f, 0.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,        1.0f, 0.0f, 0.0f,
-
+        0.5f, -0.5f,  0.5f,         1.0f,  0.0f,  0.0f,   0.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,         1.0f,  0.0f,  0.0f,   1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,         1.0f,  0.0f,  0.0f,   0.0f, 1.0f,
 
         // Left face (-X)
-        -0.5f, -0.5f, -0.5f,        -1.0f, 0.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f,        -1.0f, 0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,        -1.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,        -1.0f,  0.0f,  0.0f,   0.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,        -1.0f,  0.0f,  0.0f,   1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,        -1.0f,  0.0f,  0.0f,   1.0f, 1.0f,
 
-        -0.5f, -0.5f, -0.5f,        -1.0f, 0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,        -1.0f, 0.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,        -1.0f, 0.0f, 0.0f,
-
+        -0.5f, -0.5f, -0.5f,        -1.0f,  0.0f,  0.0f,   0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,        -1.0f,  0.0f,  0.0f,   1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,        -1.0f,  0.0f,  0.0f,   0.0f, 1.0f,
 
         // Top face (+Y)
-        -0.5f,  0.5f,  0.5f,        0.0f, 1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,        0.0f, 1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,        0.0f, 1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,         0.0f,  1.0f,  0.0f,   0.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,         0.0f,  1.0f,  0.0f,   1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,         0.0f,  1.0f,  0.0f,   1.0f, 1.0f,
 
-        -0.5f,  0.5f,  0.5f,        0.0f, 1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,        0.0f, 1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,        0.0f, 1.0f, 0.0f,
-
+        -0.5f,  0.5f,  0.5f,         0.0f,  1.0f,  0.0f,   0.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,         0.0f,  1.0f,  0.0f,   1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,         0.0f,  1.0f,  0.0f,   0.0f, 1.0f,
 
         // Bottom face (-Y)
-        -0.5f, -0.5f,  0.5f,        0.0f, -1.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f,
-        0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,         0.0f, -1.0f,  0.0f,   0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,         0.0f, -1.0f,  0.0f,   0.0f, 0.0f,
+        0.5f, -0.5f, -0.5f,         0.0f, -1.0f,  0.0f,   1.0f, 0.0f,
 
-        -0.5f, -0.5f,  0.5f,        0.0f, -1.0f, 0.0f,
-        0.5f, -0.5f, -0.5f,        0.0f, -1.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,        0.0f, -1.0f, 0.0f
+        -0.5f, -0.5f,  0.5f,         0.0f, -1.0f,  0.0f,   0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,         0.0f, -1.0f,  0.0f,   1.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,         0.0f, -1.0f,  0.0f,   1.0f, 1.0f
     };// fully pasted from chatgpt ( i get it i just don't want to type all that out )
 
     
@@ -114,6 +93,7 @@ int main() {
 
         in vec3 aPosition;
         in vec3 aNormal;
+        in vec2 aTexCoord;
 
         uniform mat4 uView;
         uniform mat4 uModel;
@@ -121,8 +101,10 @@ int main() {
 
         out vec3 vFragPos;
         out vec3 vNormal;
+        out vec2 vTexCoord;
 
         void main() {
+            vTexCoord = aTexCoord;
             vec4 worldPosition = uModel * vec4(aPosition, 1.0);
 
             vFragPos = worldPosition.xyz;
@@ -135,6 +117,9 @@ int main() {
     const char* fragmentShaderSource = R"glsl(
         #version 150 core
 
+        in vec2 vTexCoord;
+        uniform sampler2D uTexture;
+
         in vec3 vFragPos;
         in vec3 vNormal;
 
@@ -145,6 +130,8 @@ int main() {
         uniform vec3 objectColor;
 
         void main() {
+            vec4 texColor = texture(uTexture, vTexCoord);
+            
             float ambientStrength = 0.1;
             vec3 ambient = ambientStrength * lightColor;
 
@@ -155,7 +142,7 @@ int main() {
             vec3 diffuse = diffuseStrength * lightColor;
 
             // Combine ambient and diffuse lighting with the object's color
-            vec3 result = (ambient + diffuse) * objectColor;
+            vec3 result = (ambient + diffuse) * texColor.rgb * objectColor;
             outColor = vec4(result, 1.0);
         }
     )glsl";
@@ -173,7 +160,17 @@ int main() {
         Transform cubeTransform; // Create cube transform object
         cubeTransform.setPosition(0.0f, 0.0f, -3.0f); // Set cube position to (0, 0, -3)
         Input input; // Create an input object
+        Texture brickTexture;
+        SDL_Log("Working directory: %s",
+        std::filesystem::current_path().string().c_str());
 
+        SDL_Log("Texture exists: %s",
+                std::filesystem::exists("assets/textures/wall.jpg")
+                    ? "yes" : "no");
+
+        if (!brickTexture.loadImage("assets/textures/wall.jpg")) {
+            SDL_Log("Failed to load brick texture!");
+        }
 
 
         if (!program.isValid() || !cube.isValid()) {
@@ -209,7 +206,7 @@ int main() {
                     cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
     
                     light.setPosition(camera.getPosition());
-                    renderer.render(program, cube, cubeTransform, projection, light, camera);
+                    renderer.render(program, cube, cubeTransform, projection, light, camera, brickTexture);
                     window.swapBuffers();
                 }
             }

@@ -12,6 +12,8 @@ bool Texture::loadImage(const std::string& path){
     int nWidth = 0;
     int nHeight = 0;
     int nrChannels = 0;
+
+    stbi_set_flip_vertically_on_load(true);
     unsigned char *data = stbi_load(path.c_str(), &nWidth, &nHeight, &nrChannels, 0);
 
     if (data == nullptr){
