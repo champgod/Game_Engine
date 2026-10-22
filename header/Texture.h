@@ -1,13 +1,20 @@
 #pragma once
-
+#include <string>
 
 class Texture{
     public:
         Texture() = default; // Constructor setup
+        ~Texture();
 
-        bool loadImage(); // Load image
-        void bind(); // Bind texture
+        Texture(const Texture&) = delete; // can't copy over for time being
+        Texture& operator=(const Texture&) = delete; //can't copy over
+
+        bool loadImage(const std::string& path); // Load image
+        void bind() const; // Bind texture
         bool isValid() const; // Is the texture valid? 
+
+        int getWidth() const;
+        int getHeight() const;
 
     private:
         unsigned int textureId = 0; // We want to store the ID of the texture
