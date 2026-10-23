@@ -1,9 +1,10 @@
 #pragma once
+#include "Texture.h"
 
 class Material{
-    public:
+    public: 
+        const Texture texture;
 
-    private:
 
 
 };
