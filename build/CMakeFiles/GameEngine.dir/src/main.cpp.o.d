@@ -1151,6 +1151,7 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: \
   /Users/pranavtalatam/Projects/Game_Engine/header/Light.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Camera.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Texture.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Material.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Window.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL.h \
   /opt/homebrew/opt/sdl3/include/SDL3/SDL_stdinc.h \

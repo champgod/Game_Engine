@@ -20,6 +20,7 @@ class ShaderProgram{
         void setVec3Uniform(const char* name, const glm::vec3& vec) const;
         void setMat4Uniform(const char* name, const glm::mat4& matrix) const;
         void setInt(const std::string& name, int value) const;
+        void setFloat(const std::string& name, float value) const;
         
     private:
         GLuint programId = 0; // each program has a unique identifier

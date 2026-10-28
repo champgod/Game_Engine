@@ -5,6 +5,7 @@
 #include "Light.h"
 #include "Input.h"
 #include "Texture.h"
+#include "Material.h"
 
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
@@ -118,8 +119,6 @@ int main() {
         #version 150 core
 
         in vec2 vTexCoord;
-        uniform sampler2D uTexture;
-
         in vec3 vFragPos;
         in vec3 vNormal;
 
@@ -127,7 +126,13 @@ int main() {
 
         uniform vec3 lightPos;
         uniform vec3 lightColor;
+
+        uniform sampler2D uTexture;
         uniform vec3 objectColor;
+        uniform float specularStrength;
+        uniform float shininess;
+
+        uniform vec3 cameraPos;
 
         void main() {
             vec4 texColor = texture(uTexture, vTexCoord);
@@ -137,12 +142,17 @@ int main() {
 
             vec3 N = normalize(vNormal);
             vec3 L = normalize(lightPos - vFragPos);
+            vec3 V = normalize(cameraPos - vFragPos);
+            vec3 R = reflect(-L, N);
 
             float diffuseStrength = max(dot(N, L), 0.0);
             vec3 diffuse = diffuseStrength * lightColor;
 
+            float spec = pow(max(dot(V, R), 0.0), shininess);
+            vec3 specular = specularStrength * spec * lightColor;
+
             // Combine ambient and diffuse lighting with the object's color
-            vec3 result = (ambient + diffuse) * texColor.rgb * objectColor;
+            vec3 result = (ambient + diffuse) * texColor.rgb * objectColor + specular;
             outColor = vec4(result, 1.0);
         }
     )glsl";
@@ -161,6 +171,14 @@ int main() {
         cubeTransform.setPosition(0.0f, 0.0f, -3.0f); // Set cube position to (0, 0, -3)
         Input input; // Create an input object
         Texture brickTexture;
+
+        Material cubeMaterial;
+
+        cubeMaterial.setTexture(&brickTexture);
+        cubeMaterial.setColor(glm::vec3(1.0f));
+        cubeMaterial.setSpecularStrength(0.8f);
+        cubeMaterial.setShininess(32.0f);
+
         SDL_Log("Working directory: %s",
         std::filesystem::current_path().string().c_str());
 
@@ -203,10 +221,10 @@ int main() {
                     glClearColor(0.08f, 0.10f, 0.16f, 1.0f);
                     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-                    cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
+                    //cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
     
-                    light.setPosition(camera.getPosition());
-                    renderer.render(program, cube, cubeTransform, projection, light, camera, brickTexture);
+                    //light.setPosition(camera.getPosition());
+                    renderer.render(program, cube, cubeTransform, projection, light, camera, brickTexture, cubeMaterial);
                     window.swapBuffers();
                 }
             }

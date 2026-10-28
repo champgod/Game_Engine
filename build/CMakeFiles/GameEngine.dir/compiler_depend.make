@@ -5666,6 +5666,7 @@ CMakeFiles/GameEngine.dir/src/Renderer.cpp.o: /Users/pranavtalatam/Projects/Game
   /Library/Developer/CommandLineTools/usr/lib/clang/21/include/stdint.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Camera.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Light.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Material.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Mesh.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Renderer.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/ShaderProgram.h \
@@ -10374,6 +10375,7 @@ CMakeFiles/GameEngine.dir/src/main.cpp.o: /Users/pranavtalatam/Projects/Game_Eng
   /Users/pranavtalatam/Projects/Game_Engine/header/Camera.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Input.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Light.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Material.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Mesh.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Renderer.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/ShaderProgram.h \

@@ -1150,4 +1150,5 @@ CMakeFiles/GameEngine.dir/src/Renderer.cpp.o: \
   /Users/pranavtalatam/Projects/Game_Engine/header/Transform.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Light.h \
   /Users/pranavtalatam/Projects/Game_Engine/header/Camera.h \
-  /Users/pranavtalatam/Projects/Game_Engine/header/Texture.h
+  /Users/pranavtalatam/Projects/Game_Engine/header/Texture.h \
+  /Users/pranavtalatam/Projects/Game_Engine/header/Material.h

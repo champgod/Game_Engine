@@ -130,3 +130,12 @@ void ShaderProgram::setInt(const std::string& name, int value) const {
         SDL_Log("Uniform not found: %s", name.c_str());
     }
 }
+
+void ShaderProgram::setFloat(const std::string& name, float value) const{
+    GLint uniformPos = glGetUniformLocation(programId, name.c_str());
+    if (uniformPos != -1) {
+        glUniform1f(uniformPos, value);
+    } else {
+        SDL_Log("Uniform not found: %s", name.c_str());
+    }
+}
