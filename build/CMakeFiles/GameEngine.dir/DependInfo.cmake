@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/pranavtalatam/Projects/Game_Engine/src/Camera.cpp" "CMakeFiles/GameEngine.dir/src/Camera.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Camera.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Input.cpp" "CMakeFiles/GameEngine.dir/src/Input.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Input.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Light.cpp" "CMakeFiles/GameEngine.dir/src/Light.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Light.cpp.o.d"
+  "/Users/pranavtalatam/Projects/Game_Engine/src/Material.cpp" "CMakeFiles/GameEngine.dir/src/Material.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Material.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Mesh.cpp" "CMakeFiles/GameEngine.dir/src/Mesh.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Mesh.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Renderer.cpp" "CMakeFiles/GameEngine.dir/src/Renderer.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Renderer.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/ShaderProgram.cpp" "CMakeFiles/GameEngine.dir/src/ShaderProgram.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/ShaderProgram.cpp.o.d"
