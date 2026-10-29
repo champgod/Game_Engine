@@ -176,7 +176,7 @@ int main() {
 
         cubeMaterial.setTexture(&brickTexture);
         cubeMaterial.setColor(glm::vec3(1.0f));
-        cubeMaterial.setSpecularStrength(0.8f);
+        cubeMaterial.setSpecularStrength(0.1f);
         cubeMaterial.setShininess(32.0f);
 
         SDL_Log("Working directory: %s",
@@ -221,7 +221,7 @@ int main() {
                     glClearColor(0.08f, 0.10f, 0.16f, 1.0f);
                     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-                    //cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
+                    cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
     
                     //light.setPosition(camera.getPosition());
                     renderer.render(program, cube, cubeTransform, projection, light, camera, brickTexture, cubeMaterial);
