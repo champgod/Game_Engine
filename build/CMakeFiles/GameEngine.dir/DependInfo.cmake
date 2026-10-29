@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/pranavtalatam/Projects/Game_Engine/src/Camera.cpp" "CMakeFiles/GameEngine.dir/src/Camera.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Camera.cpp.o.d"
+  "/Users/pranavtalatam/Projects/Game_Engine/src/GameObject.cpp" "CMakeFiles/GameEngine.dir/src/GameObject.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/GameObject.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Input.cpp" "CMakeFiles/GameEngine.dir/src/Input.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Input.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Light.cpp" "CMakeFiles/GameEngine.dir/src/Light.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Light.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Material.cpp" "CMakeFiles/GameEngine.dir/src/Material.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Material.cpp.o.d"

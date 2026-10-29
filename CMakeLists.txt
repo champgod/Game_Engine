@@ -22,6 +22,7 @@ add_executable(GameEngine
     src/stb_image.cpp
     src/Texture.cpp
     src/Material.cpp
+    src/GameObject.cpp
 )
 
 target_link_libraries(
