@@ -1,7 +1,4 @@
 #include "GameObject.h"
-
-
-
 const Mesh* GameObject::getMesh() const{
     return mesh;
 }
