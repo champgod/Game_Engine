@@ -7,7 +7,7 @@
 class Material{
     public: 
         /* CONSTRUCTOR AND DESTRUCTORS */
-        Material() = default;
+        Material(const Texture* texture, glm::vec3 color, float specularStrength, float shininess);
         ~Material() = default;
 
         /* GETTERS AND SETTERS DOWN HERE */

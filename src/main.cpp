@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "Texture.h"
 #include "Material.h"
+#include "GameObject.h"
 
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
@@ -171,14 +172,8 @@ int main() {
         cubeTransform.setPosition(0.0f, 0.0f, -3.0f); // Set cube position to (0, 0, -3)
         Input input; // Create an input object
         Texture brickTexture;
-        Material cubeMaterial;
-
-        cubeMaterial.setTexture(&brickTexture);
-        cubeMaterial.setColor(glm::vec3(1.0f));
-        cubeMaterial.setSpecularStrength(0.1f);
-        cubeMaterial.setShininess(32.0f);
-
-
+        Material cubeMaterial(&brickTexture, glm::vec3(1.0f), 0.1f, 32.0f);
+        GameObject cubeObject(&cube, &cubeMaterial, cubeTransform);
 
         SDL_Log("Working directory: %s",
         std::filesystem::current_path().string().c_str());
@@ -225,7 +220,7 @@ int main() {
                     cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
     
                     //light.setPosition(camera.getPosition());
-                    renderer.render(program, cube, cubeTransform, projection, light, camera, brickTexture, cubeMaterial);
+                    renderer.render(program, projection, light, camera, cubeObject);
                     window.swapBuffers();
                 }
             }

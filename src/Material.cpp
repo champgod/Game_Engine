@@ -1,5 +1,12 @@
 #include "Material.h"
 
+Material::Material(const Texture* texture, glm::vec3 color, float specularStrength, float shininess){
+    this->texture = texture;
+    this->color = color;
+    this->specularStrength = specularStrength;
+    this->shininess = shininess;
+}
+
 const Texture* Material::getTexture() const{
     return texture;
 }
