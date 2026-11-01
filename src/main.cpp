@@ -171,13 +171,14 @@ int main() {
         cubeTransform.setPosition(0.0f, 0.0f, -3.0f); // Set cube position to (0, 0, -3)
         Input input; // Create an input object
         Texture brickTexture;
-
         Material cubeMaterial;
 
         cubeMaterial.setTexture(&brickTexture);
         cubeMaterial.setColor(glm::vec3(1.0f));
         cubeMaterial.setSpecularStrength(0.1f);
         cubeMaterial.setShininess(32.0f);
+
+
 
         SDL_Log("Working directory: %s",
         std::filesystem::current_path().string().c_str());

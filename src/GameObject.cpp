@@ -1,5 +1,11 @@
 #include "GameObject.h"
 
+GameObject::GameObject(const Mesh* mesh, const Material* material, const Transform& transform){
+    this->mesh = mesh;
+    this->material = material;
+    this->transform = transform;
+}
+
 const Mesh* GameObject::getMesh() const{
     return mesh;
 }

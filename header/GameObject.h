@@ -5,14 +5,14 @@
 
 class GameObject{
     public:
-        GameObject() = default;
+        GameObject(const Mesh* mesh, const Material* material, const Transform& transform);
         ~GameObject() = default;
 
         /*GETTERS*/
         const Mesh* getMesh() const;
         const Material* getMaterial() const;
         Transform& getTransform(); // We can modify this transform.
-        const Transform& getTransform() const; // This one means we can't modify the transform and the returned transform is not modifiable.
+        const Transform& getTransform() const; // This one means we can't modify the transform and the returned transform is not modifiable
 
         /*SETTERS*/
         void setMesh(const Mesh* mesh);
