@@ -11,8 +11,13 @@ class GameObject{
         /*GETTERS*/
         const Mesh* getMesh() const;
         const Material* getMaterial() const;
-        Transform getTransform() const;
+        Transform& getTransform();
 
+        /*SETTERS*/
+        void setMesh(const Mesh* mesh);
+        void setMaterial(const Material* material);
+
+        //no setter for Transform. why? because transform methods work for all gameobjects 
 
     private:
         /*INSTANCE ATTRIBUTES*/
