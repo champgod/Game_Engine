@@ -1,4 +1,5 @@
 #include "GameObject.h"
+
 const Mesh* GameObject::getMesh() const{
     return mesh;
 }
@@ -11,10 +12,14 @@ Transform& GameObject::getTransform(){
     return transform;
 }
 
-void GameObject::setMesh(const* Mesh mesh){
+const Transform& GameObject::getTransform() const{
+    return transform;
+}
+
+void GameObject::setMesh(const Mesh* mesh){
     this->mesh = mesh;
 }
 
-void GameObject::setMaterial(const* Material material){
+void GameObject::setMaterial(const Material* material){
     this->material = material;
 }

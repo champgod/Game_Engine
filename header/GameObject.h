@@ -11,7 +11,8 @@ class GameObject{
         /*GETTERS*/
         const Mesh* getMesh() const;
         const Material* getMaterial() const;
-        Transform& getTransform();
+        Transform& getTransform(); // We can modify this transform.
+        const Transform& getTransform() const; // This one means we can't modify the transform and the returned transform is not modifiable.
 
         /*SETTERS*/
         void setMesh(const Mesh* mesh);
