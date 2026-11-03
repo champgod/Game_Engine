@@ -5,8 +5,8 @@
 
 class GameObject{
     public:
+        /*CONSTRUCTOR*/
         GameObject(const Mesh* mesh, const Material* material, const Transform& transform);
-        ~GameObject() = default;
 
         /*GETTERS*/
         const Mesh* getMesh() const;
