@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/pranavtalatam/Projects/Game_Engine/src/Material.cpp" "CMakeFiles/GameEngine.dir/src/Material.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Material.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Mesh.cpp" "CMakeFiles/GameEngine.dir/src/Mesh.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Mesh.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Renderer.cpp" "CMakeFiles/GameEngine.dir/src/Renderer.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Renderer.cpp.o.d"
+  "/Users/pranavtalatam/Projects/Game_Engine/src/Scene.cpp" "CMakeFiles/GameEngine.dir/src/Scene.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Scene.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/ShaderProgram.cpp" "CMakeFiles/GameEngine.dir/src/ShaderProgram.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/ShaderProgram.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Texture.cpp" "CMakeFiles/GameEngine.dir/src/Texture.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Texture.cpp.o.d"
   "/Users/pranavtalatam/Projects/Game_Engine/src/Transform.cpp" "CMakeFiles/GameEngine.dir/src/Transform.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/Transform.cpp.o.d"

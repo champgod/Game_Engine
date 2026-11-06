@@ -23,6 +23,7 @@ add_executable(GameEngine
     src/Texture.cpp
     src/Material.cpp
     src/GameObject.cpp
+    src/Scene.cpp
 )
 
 target_link_libraries(

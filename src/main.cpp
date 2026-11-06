@@ -7,6 +7,7 @@
 #include "Texture.h"
 #include "Material.h"
 #include "GameObject.h"
+#include "Scene.h"
 
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
@@ -175,6 +176,9 @@ int main() {
         Material cubeMaterial(&brickTexture, glm::vec3(1.0f), 0.1f, 32.0f);
         GameObject cubeObject(&cube, &cubeMaterial, cubeTransform);
 
+        Scene scene; // Create a scene object (this will store all of our gameobjects)
+        scene.addObject(cubeObject); // Adds a cubeObject ot our scene
+
         SDL_Log("Working directory: %s",
         std::filesystem::current_path().string().c_str());
 
@@ -220,7 +224,10 @@ int main() {
                     cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
     
                     //light.setPosition(camera.getPosition());
-                    renderer.render(program, projection, light, camera, cubeObject);
+
+                    for (unsigned int i = 0; i < scene.getList().size(); i++){
+                        renderer.render(program, projection, light, camera, scene.getObject(i));
+                    }
                     window.swapBuffers();
                 }
             }

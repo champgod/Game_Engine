@@ -254,6 +254,20 @@ CMakeFiles/GameEngine.dir/src/GameObject.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GameEngine.dir/src/GameObject.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavtalatam/Projects/Game_Engine/src/GameObject.cpp -o CMakeFiles/GameEngine.dir/src/GameObject.cpp.s
 
+CMakeFiles/GameEngine.dir/src/Scene.cpp.o: CMakeFiles/GameEngine.dir/flags.make
+CMakeFiles/GameEngine.dir/src/Scene.cpp.o: /Users/pranavtalatam/Projects/Game_Engine/src/Scene.cpp
+CMakeFiles/GameEngine.dir/src/Scene.cpp.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pranavtalatam/Projects/Game_Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/GameEngine.dir/src/Scene.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/src/Scene.cpp.o -MF CMakeFiles/GameEngine.dir/src/Scene.cpp.o.d -o CMakeFiles/GameEngine.dir/src/Scene.cpp.o -c /Users/pranavtalatam/Projects/Game_Engine/src/Scene.cpp
+
+CMakeFiles/GameEngine.dir/src/Scene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GameEngine.dir/src/Scene.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavtalatam/Projects/Game_Engine/src/Scene.cpp > CMakeFiles/GameEngine.dir/src/Scene.cpp.i
+
+CMakeFiles/GameEngine.dir/src/Scene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GameEngine.dir/src/Scene.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavtalatam/Projects/Game_Engine/src/Scene.cpp -o CMakeFiles/GameEngine.dir/src/Scene.cpp.s
+
 # Object files for target GameEngine
 GameEngine_OBJECTS = \
 "CMakeFiles/GameEngine.dir/src/main.cpp.o" \
@@ -268,7 +282,8 @@ GameEngine_OBJECTS = \
 "CMakeFiles/GameEngine.dir/src/stb_image.cpp.o" \
 "CMakeFiles/GameEngine.dir/src/Texture.cpp.o" \
 "CMakeFiles/GameEngine.dir/src/Material.cpp.o" \
-"CMakeFiles/GameEngine.dir/src/GameObject.cpp.o"
+"CMakeFiles/GameEngine.dir/src/GameObject.cpp.o" \
+"CMakeFiles/GameEngine.dir/src/Scene.cpp.o"
 
 # External object files for target GameEngine
 GameEngine_EXTERNAL_OBJECTS =
@@ -286,12 +301,13 @@ GameEngine: CMakeFiles/GameEngine.dir/src/stb_image.cpp.o
 GameEngine: CMakeFiles/GameEngine.dir/src/Texture.cpp.o
 GameEngine: CMakeFiles/GameEngine.dir/src/Material.cpp.o
 GameEngine: CMakeFiles/GameEngine.dir/src/GameObject.cpp.o
+GameEngine: CMakeFiles/GameEngine.dir/src/Scene.cpp.o
 GameEngine: CMakeFiles/GameEngine.dir/build.make
 GameEngine: /opt/homebrew/opt/sdl3/lib/libSDL3.0.dylib
 GameEngine: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework
 GameEngine: /opt/homebrew/lib/libglm.dylib
 GameEngine: CMakeFiles/GameEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pranavtalatam/Projects/Game_Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable GameEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pranavtalatam/Projects/Game_Engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable GameEngine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GameEngine.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Copying game assets..."
 	/opt/homebrew/bin/cmake -E copy_directory /Users/pranavtalatam/Projects/Game_Engine/assets /Users/pranavtalatam/Projects/Game_Engine/build/assets

@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/GameEngine.dir/src/Mesh.cpp.o.d"
   "CMakeFiles/GameEngine.dir/src/Renderer.cpp.o"
   "CMakeFiles/GameEngine.dir/src/Renderer.cpp.o.d"
+  "CMakeFiles/GameEngine.dir/src/Scene.cpp.o"
+  "CMakeFiles/GameEngine.dir/src/Scene.cpp.o.d"
   "CMakeFiles/GameEngine.dir/src/ShaderProgram.cpp.o"
   "CMakeFiles/GameEngine.dir/src/ShaderProgram.cpp.o.d"
   "CMakeFiles/GameEngine.dir/src/Texture.cpp.o"

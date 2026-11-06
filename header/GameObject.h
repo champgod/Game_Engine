@@ -20,6 +20,8 @@ class GameObject{
 
         //no setter for Transform. why? because transform methods work for all gameobjects 
 
+        
+
     private:
         /*INSTANCE ATTRIBUTES*/
         const Mesh* mesh = nullptr;
