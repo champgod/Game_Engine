@@ -13,6 +13,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <filesystem>
+#include <iterator>
 
 int main() {
     Window window("GameEngine", 800, 600); // Create an SDL Window that is already resizable by default
@@ -173,7 +174,7 @@ int main() {
         Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(1.0f, 1.0f, 1.0f)); // Create light object
         Camera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f)); // Create camera object
 
-        Mesh cube(cubeVertices, cubeIndices, sizeof(cubeVertices) / (8 * sizeof(float)), sizeof(cubeIndices) / sizeof(unsigned int)); // Create a cube mesh
+        Mesh cube(cubeVertices, cubeIndices, std::size(cubeVertices) / 8, std::size(cubeIndices)); // Create a cube mesh
         Renderer renderer; // Create renderer object
         
         Transform cubeTransform; // Create cube transform object
