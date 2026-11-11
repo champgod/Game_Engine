@@ -24,5 +24,6 @@ void Renderer::render(const ShaderProgram& program, const glm::mat4& projection,
     program.setMat4Uniform("uModel", transform.getModelMatrix()); // Sets the uModel to the transform model matrix
     
     mesh.bind();
-    glDrawArrays(GL_TRIANGLES, 0, mesh.getVertexCount()); // Draws the arrays using the vertex count in Mesh
+
+    glDrawElements(GL_TRIANGLES, mesh.getIndexCount(), GL_UNSIGNED_INT, nullptr); // Draws the elements using the index count in Mesh
 }

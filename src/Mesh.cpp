@@ -1,16 +1,21 @@
 #include "Mesh.h"
 
-Mesh::Mesh(const float* vertices, GLsizei vertexCount){    
+Mesh::Mesh(const float* vertices, const unsigned int* indices, GLsizei vertexCount, GLsizei indexCount){    
     this->vertexCount = vertexCount; // Sets the vertex count to whatever we pass
+    this->indexCount = indexCount;
 
     glGenVertexArrays(1, &vao); // Generates a vertex array object names
-    glGenBuffers(1, &vbo); // Generates buffer object names
-
     glBindVertexArray(vao); // Binds a vertex array object
-    glBindBuffer(GL_ARRAY_BUFFER, vbo); // Binds the named buffer objects
 
+    glGenBuffers(1, &vbo); // Generates buffer object names
+    glBindBuffer(GL_ARRAY_BUFFER, vbo); // Binds the named buffer objects
     glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(vertexCount) * 8 * sizeof(float), vertices, GL_STATIC_DRAW); // configure buffer data
+
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), nullptr); //configure vertex attribute data
+
+    glGenBuffers(1, &ibo); // Generates index buffer object names
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo); // Binds the named index buffer objects
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, static_cast<GLsizeiptr>(indexCount) * sizeof(unsigned int), indices, GL_STATIC_DRAW); // configure index buffer data
 
     glEnableVertexAttribArray(0); // enable vertex attribute data
 
@@ -22,6 +27,9 @@ Mesh::Mesh(const float* vertices, GLsizei vertexCount){
 }
 
 Mesh::~Mesh(){
+    if(ibo != 0){
+        glDeleteBuffers(1, &ibo);
+    }
     if(vao != 0){
         glDeleteVertexArrays(1, &vao);
     }
@@ -35,10 +43,15 @@ void Mesh::bind() const{
 }
 
 bool Mesh::isValid() const{
-    return (vao != 0 && vbo != 0 && vertexCount > 0);
+    return (vao != 0 && vbo != 0  &&ibo != 0 && vertexCount > 0 && indexCount > 0);
 }
 
 GLsizei Mesh::getVertexCount() const{
     return vertexCount;
 }
+
+GLsizei Mesh::getIndexCount() const{
+    return indexCount;
+}
+
 

@@ -31,15 +31,11 @@ int main() {
     bool running = true;
     SDL_Event event;
 
-    
     const float cubeVertices[] = {
         // Front face (+Z)
         // Position                  Normal                UV
         -0.5f, -0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   0.0f, 0.0f,
         0.5f, -0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   1.0f, 1.0f,
-
-        -0.5f, -0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   0.0f, 0.0f,
         0.5f,  0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   1.0f, 1.0f,
         -0.5f,  0.5f,  0.5f,         0.0f,  0.0f,  1.0f,   0.0f, 1.0f,
 
@@ -47,17 +43,11 @@ int main() {
         -0.5f, -0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   1.0f, 0.0f,
         -0.5f,  0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   1.0f, 1.0f,
         0.5f,  0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   0.0f, 1.0f,
-
-        -0.5f, -0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   0.0f, 1.0f,
         0.5f, -0.5f, -0.5f,         0.0f,  0.0f, -1.0f,   0.0f, 0.0f,
 
         // Right face (+X)
         0.5f, -0.5f,  0.5f,         1.0f,  0.0f,  0.0f,   0.0f, 0.0f,
         0.5f, -0.5f, -0.5f,         1.0f,  0.0f,  0.0f,   1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,         1.0f,  0.0f,  0.0f,   1.0f, 1.0f,
-
-        0.5f, -0.5f,  0.5f,         1.0f,  0.0f,  0.0f,   0.0f, 0.0f,
         0.5f,  0.5f, -0.5f,         1.0f,  0.0f,  0.0f,   1.0f, 1.0f,
         0.5f,  0.5f,  0.5f,         1.0f,  0.0f,  0.0f,   0.0f, 1.0f,
 
@@ -65,17 +55,11 @@ int main() {
         -0.5f, -0.5f, -0.5f,        -1.0f,  0.0f,  0.0f,   0.0f, 0.0f,
         -0.5f, -0.5f,  0.5f,        -1.0f,  0.0f,  0.0f,   1.0f, 0.0f,
         -0.5f,  0.5f,  0.5f,        -1.0f,  0.0f,  0.0f,   1.0f, 1.0f,
-
-        -0.5f, -0.5f, -0.5f,        -1.0f,  0.0f,  0.0f,   0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,        -1.0f,  0.0f,  0.0f,   1.0f, 1.0f,
         -0.5f,  0.5f, -0.5f,        -1.0f,  0.0f,  0.0f,   0.0f, 1.0f,
 
         // Top face (+Y)
         -0.5f,  0.5f,  0.5f,         0.0f,  1.0f,  0.0f,   0.0f, 0.0f,
         0.5f,  0.5f,  0.5f,         0.0f,  1.0f,  0.0f,   1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,         0.0f,  1.0f,  0.0f,   1.0f, 1.0f,
-
-        -0.5f,  0.5f,  0.5f,         0.0f,  1.0f,  0.0f,   0.0f, 0.0f,
         0.5f,  0.5f, -0.5f,         0.0f,  1.0f,  0.0f,   1.0f, 1.0f,
         -0.5f,  0.5f, -0.5f,         0.0f,  1.0f,  0.0f,   0.0f, 1.0f,
 
@@ -83,11 +67,34 @@ int main() {
         -0.5f, -0.5f,  0.5f,         0.0f, -1.0f,  0.0f,   0.0f, 1.0f,
         -0.5f, -0.5f, -0.5f,         0.0f, -1.0f,  0.0f,   0.0f, 0.0f,
         0.5f, -0.5f, -0.5f,         0.0f, -1.0f,  0.0f,   1.0f, 0.0f,
-
-        -0.5f, -0.5f,  0.5f,         0.0f, -1.0f,  0.0f,   0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,         0.0f, -1.0f,  0.0f,   1.0f, 0.0f,
         0.5f, -0.5f,  0.5f,         0.0f, -1.0f,  0.0f,   1.0f, 1.0f
     };// fully pasted from chatgpt ( i get it i just don't want to type all that out )
+
+    const unsigned int cubeIndices[] = {
+        // front face (+z)
+        0, 1, 2,
+        0, 2, 3,
+
+        // back face (-z)
+        4, 5, 6,
+        4, 6, 7,
+
+        // right face (+z)
+        8, 9, 10,
+        8, 10, 11,
+
+        // left face(-x)
+        12, 13, 14,
+        12, 14, 15,
+
+        // top face (+y)
+        16, 17, 18,
+        16, 18, 19,
+
+        // bottom face (-y)
+        20, 21, 22,
+        20, 22, 23
+    };
 
     
     
@@ -166,7 +173,7 @@ int main() {
         Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(1.0f, 1.0f, 1.0f)); // Create light object
         Camera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f)); // Create camera object
 
-        Mesh cube(cubeVertices, 36); // Create a cube mesh
+        Mesh cube(cubeVertices, cubeIndices, 24, 36); // Create a cube mesh
         Renderer renderer; // Create renderer object
         
         Transform cubeTransform; // Create cube transform object
