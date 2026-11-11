@@ -68,7 +68,7 @@ int main() {
         -0.5f, -0.5f, -0.5f,         0.0f, -1.0f,  0.0f,   0.0f, 0.0f,
         0.5f, -0.5f, -0.5f,         0.0f, -1.0f,  0.0f,   1.0f, 0.0f,
         0.5f, -0.5f,  0.5f,         0.0f, -1.0f,  0.0f,   1.0f, 1.0f
-    };// fully pasted from chatgpt ( i get it i just don't want to type all that out )
+    };// fully pasted from chatgpt ( i get it i just don't want to type all that out ) + condensed repeating vertices per face to 1 row
 
     const unsigned int cubeIndices[] = {
         // front face (+z)
@@ -173,7 +173,7 @@ int main() {
         Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(1.0f, 1.0f, 1.0f)); // Create light object
         Camera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f)); // Create camera object
 
-        Mesh cube(cubeVertices, cubeIndices, 24, 36); // Create a cube mesh
+        Mesh cube(cubeVertices, cubeIndices, sizeof(cubeVertices) / (8 * sizeof(float)), sizeof(cubeIndices) / sizeof(unsigned int)); // Create a cube mesh
         Renderer renderer; // Create renderer object
         
         Transform cubeTransform; // Create cube transform object
