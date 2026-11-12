@@ -8,6 +8,7 @@
 #include "Material.h"
 #include "GameObject.h"
 #include "Scene.h"
+#include "OBJLoader.h"
 
 #include <OpenGL/gl3.h>
 #include <glm/glm.hpp>
@@ -162,7 +163,8 @@ int main() {
             vec3 specular = specularStrength * spec * lightColor;
 
             // Combine ambient and diffuse lighting with the object's color
-            vec3 result = (ambient + diffuse) * texColor.rgb * objectColor + specular;
+            vec3 result = (ambient + diffuse) * texColor.rgb * objectColor  + specular;
+            
             outColor = vec4(result, 1.0);
         }
     )glsl";
@@ -171,31 +173,37 @@ int main() {
 
     {
         ShaderProgram program(vertexShaderSource, fragmentShaderSource); // Create a program object
-        Light light(glm::vec3(0.0f, 0.0f, -2.0f), glm::vec3(1.0f, 1.0f, 1.0f)); // Create light object
+        Light light(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f)); // Create light object
         Camera camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f)); // Create camera object
 
         Mesh cube(cubeVertices, cubeIndices, std::size(cubeVertices) / 8, std::size(cubeIndices)); // Create a cube mesh
         Renderer renderer; // Create renderer object
         
-        Transform cubeTransform; // Create cube transform object
-        cubeTransform.setPosition(0.0f, 0.0f, -3.0f); // Set cube position to (0, 0, -3)
+        Transform monkeyTransform; // Create monkey transform object
+        monkeyTransform.setPosition(0.0f, 0.0f, -3.0f); // Set cube position to (0, 0, -3)
         Input input; // Create an input object
-        Texture brickTexture;
-        Material cubeMaterial(&brickTexture, glm::vec3(1.0f), 0.1f, 32.0f);
-        GameObject cubeObject(&cube, &cubeMaterial, cubeTransform);
+        Texture flowerTexture;
+
+        Material monkeyMaterial(&flowerTexture, glm::vec3(1.0f), 0.1f, 32.0f);
+        OBJLoader::MeshInfo mesh = OBJLoader::getMeshInfo("assets/blender/notsmoothmonkey.obj");
+        Mesh monkey(mesh.vertices.data(), mesh.indices.data(), mesh.vertices.size() / 8, mesh.indices.size());
+
+        GameObject cubeObject(&monkey, &monkeyMaterial, monkeyTransform);
+
 
         Scene scene; // Create a scene object (this will store all of our gameobjects)
-        scene.addObject(cubeObject); // Adds a cubeObject ot our scene
+        //scene.addObject(cubeObject); // Adds a cubeObject ot our scene
+        scene.addObject(cubeObject);
 
         SDL_Log("Working directory: %s",
         std::filesystem::current_path().string().c_str());
 
         SDL_Log("Texture exists: %s",
-                std::filesystem::exists("assets/textures/wall.jpg")
+                std::filesystem::exists("assets/textures/lotusflower.jpg")
                     ? "yes" : "no");
 
-        if (!brickTexture.loadImage("assets/textures/wall.jpg")) {
-            SDL_Log("Failed to load brick texture!");
+        if (!flowerTexture.loadImage("assets/textures/lotusflower.jpg")) {
+            SDL_Log("Failed to load flower texture!");
         }
 
 
@@ -229,7 +237,7 @@ int main() {
                     glClearColor(0.08f, 0.10f, 0.16f, 1.0f);
                     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-                    cubeTransform.rotate(glm::radians(0.0f), glm::radians(1.0f), 0.0f);
+                    monkeyTransform.rotate(glm::radians(1.0f), glm::radians(1.0f), 0.0f);
     
                     //light.setPosition(camera.getPosition());
 

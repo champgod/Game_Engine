@@ -1,9 +1,11 @@
-#include "OBJLOADER.h"
+#include "OBJLoader.h"
 
 #include <array>
-#include <vector>
+#include <algorithm>
+#include <fstream>
+#include <sstream>
 
-MeshInfo OBJLoader::getMeshInfo(const std::string& filepath){
+OBJLoader::MeshInfo OBJLoader::getMeshInfo(const std::string& filepath){
     std::ifstream file(filepath);
     std::string line;
 
@@ -14,6 +16,12 @@ MeshInfo OBJLoader::getMeshInfo(const std::string& filepath){
     std::vector<std::array<float, 3>> vertexPos;
     std::vector<std::array<float, 3>> vertexNormal;
     std::vector<std::array<float, 2>> textureCoords;
+
+    std::vector<float> vertices;
+    std::vector<unsigned int> indices;
+
+    unsigned int index = 0; // we need a counter for index of every set of 8 vertices to add
+
 
     while (std::getline(file, line)) {
         std::istringstream stream(line);
@@ -35,11 +43,41 @@ MeshInfo OBJLoader::getMeshInfo(const std::string& filepath){
             stream >> x >> y >> z;
             vertexNormal.push_back({x, y, z});
         }
-    }
+        else if(prefix == "f"){
+            std::string chunk;
+            while (stream >> chunk) {
+                std::replace(chunk.begin(), chunk.end(), '/', ' ');
+                std::istringstream parser(chunk);
 
+                int vIndex, tIndex, nIndex;
+                parser >> vIndex >> tIndex >> nIndex;
+
+                const std::array<float, 3>& pos = vertexPos.at(vIndex - 1); 
+                const std::array<float, 3>& norm = vertexNormal.at(nIndex - 1);
+                const std::array<float, 2>& tex = textureCoords.at(tIndex - 1);
+
+                vertices.insert(vertices.end(), {
+                    pos[0], pos[1], pos[2],
+                    norm[0], norm[1], norm[2],
+                    tex[0], tex[1]
+                });
+                indices.push_back(index++);
+            }   
+        }
+    }
+    file.close();
+
+    MeshInfo mesh;
+    mesh.vertices = vertices;
+    mesh.indices = indices;
+
+    return mesh;
 }
 
+
+
 /*
+
 
 
 # Example: square.obj

@@ -1,7 +1,7 @@
 #pragma once
-#include <fstream>
-#include <sstream>
+
 #include <string>
+#include <vector>
 
 
 class OBJLoader {
@@ -11,6 +11,6 @@ class OBJLoader {
             std::vector<unsigned int> indices;
         };
 
-        static getMeshInfo(const std::string& filepath); // returns the meshinfo struct for us to read from, method should be callable by class
+        static MeshInfo getMeshInfo(const std::string& filepath); // returns the meshinfo struct for us to read from, method should be callable by class
 
 };

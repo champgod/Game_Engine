@@ -13,7 +13,7 @@ void Renderer::render(const ShaderProgram& program, const glm::mat4& projection,
 
     program.setVec3Uniform("lightPos", light.getPosition());
     program.setVec3Uniform("lightColor", light.getColor());
-    program.setVec3Uniform("objectColor", glm::vec3(1.0f, 0.2f, 0.2f));
+    program.setVec3Uniform("objectColor", glm::vec3(1.0f, 1.0f, 1.0f));
 
     program.setVec3Uniform("cameraPos", camera.getPosition());
     program.setFloat("specularStrength", material.getSpecularStrength()); // Sets the specular strength to whatever the material's specular strength is

@@ -24,6 +24,7 @@ add_executable(GameEngine
     src/Material.cpp
     src/GameObject.cpp
     src/Scene.cpp
+    src/OBJLoader.cpp
 )
 
 target_link_libraries(
